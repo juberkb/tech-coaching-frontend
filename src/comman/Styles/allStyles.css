@@ -266,74 +266,66 @@
 /* navbar styles end */
 
 /* home page css start */
-.homeBackground-container-imageSide {
+.movingShape {
   position: relative;
-  background-image:
-    url("../../assets/shape-15.png");
-  background-position: 1% 80%;
-  background-size:
-    150px,
-    /* Size of HTML Icon */
-  ;
+  background-image: url("../../assets/shape-15.png");
+  background-position: 10% 30%; /* Initial position */
+  background-size: 100px; /* Size of the shape */
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
+  
+  /* Animation properties */
+  animation: moveBackground 3s ease-in-out infinite alternate;
 }
+
+/* Keyframes for the left-to-right movement */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 5%; /* Start at the left */
+  }
+  100% {
+    background-position: 10rem 5%; /* Move to the right, within 5rem width */
+  }
+}
+
 
 .homeBackground-container-image {
   position: relative;
   background-image:
     url("../../assets/html-icon.png"),
-    /* HTML Icon */
-    url("../../assets/horizonatlShape1.png"),
-    /* Shape 1 */
+    url("../../assets/horizonatlShape1.png"), /* Horizontal shape */
     url("../../assets/python-icon.png"),
-    /* Python Icon */
     url("../../assets/shape-31.png"),
-    /* Shape 31 */
     url("../../assets/code-icon.png"),
-    /* Code Icon */
-    url("../../assets/shape-098.png");
-  /* Shape 3 */
+    url("../../assets/shape-098.png"),
+    url("../../assets/circle-png.png");
 
   background-position:
-    35% 25%,
-    /* HTML Icon at the top left */
-    100% 75%,
-    /* Code Icon near the center */
-    105% 60%,
-    /* Python Icon at the top right */
-    110% 35%,
-    /* Shape 31  near the bottom left */
-    40% 65%,
-    /* Shape 2 at the bottom right */
-    50% 95%;
-  /* Shape 3 at the very bottom center */
+    32% 25%,  /* HTML Icon */
+    100% 65%, /* Horizontal shape - kept static */
+    90% 50%,  /* Python Icon */
+    90% 25%,  /* Shape 31 */
+    40% 65%,  /* Shape 2 */
+    40% 100%, /* Shape 3 */
+    92% 39%;  /* Circle shape */
 
   background-size:
     150px,
-    /* Size of HTML Icon */
     50px,
-    /* Size of Code Icon */
     160px,
-    /* Size of Python Icon */
     150px,
-    /* Size of Shape 1 */
     100px,
-    /* Size of Shape 2 */
-    80px;
-  /* Size of Shape 3 */
+    120px,
+    100px;
 
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
+  transition: background-position 0.1s ease-in-out; /* Smooth movement */
 }
 
-.aboutImage {
-  -webkit-box-shadow: 0px 0px 0px 30px rgba(185, 250, 213, 1);
-  -moz-box-shadow: 0px 0px 0px 30px rgb(172, 172, 172);
-  box-shadow: 0px 0px 0px 30px rgb(243, 242, 242);
-}
+
 
 .homeBackground-container-imageAbout {
   position: relative;
@@ -341,30 +333,29 @@
     url("../../assets/shape-46-1.png"),
     url("../../assets/shape-31.png"),
     url("../../assets/shape-05.png");
-  /* Dotted grid */
 
   background-position:
-    10% 1%,
-    /* Position the red circular shape */
-    1% 40%,
-    100% 100%;
-  /* Position the dotted grid */
-  ;
-  /* Position the dotted grid */
-
+    10% 1%, 
+    1% 40%, 
+    100% 100%; 
 
   background-size:
-    200px,
-    /* Size of red circular shape */
-    200px,
-    /* Size of dotted grid */
+    200px, 
+    200px, 
     200px;
-  /* Size of dotted grid */
 
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
+  transition: background-position 0.1s ease-in-out;
 }
+.aboutImage {
+  -webkit-box-shadow: 0px 0px 0px 30px rgba(185, 250, 213, 1);
+  -moz-box-shadow: 0px 0px 0px 30px rgb(172, 172, 172);
+  box-shadow: 0px 0px 0px 30px rgb(243, 242, 242);
+}
+
+
 
 /* features styles */
 .featuresShadow {

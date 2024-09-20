@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from "./comman/navbar/Navbar.js"
 import Footer from "./comman/footer/Footer.js"
 import Home from "./pages/home/Home.js"
+import { ChakraProvider } from '@chakra-ui/react';
+
 // import Home from './HeroSections/Home.js';
 // import Navbar from './HeroSections/Navbar.js';
 // import Footer from './HeroSections/Footer.js';
@@ -34,7 +36,8 @@ function App() {
   // ];
 
   return (
-    <div className="App">
+
+  <ChakraProvider>
       <header className="App-header">
         <Router>
           {/* <Navbar data={data} /> */}
@@ -53,7 +56,7 @@ function App() {
           <Footer />
         </Router>
       </header>
-    </div>
+      </ChakraProvider>
   );
 }
 

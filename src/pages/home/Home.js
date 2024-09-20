@@ -1,7 +1,8 @@
-import React from 'react';
+import {React,useState} from 'react';
 import "../../comman/Styles/allStyles.css"
-import { Box, HStack, ChakraProvider, VStack, Heading, Text, Image, Flex, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Stack, Input, IconButton } from '@chakra-ui/react';
+import { Box,Grid, GridItem, Avatar, HStack, ChakraProvider, VStack, Heading, Text, Image, Flex, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Stack, Input, IconButton } from '@chakra-ui/react';
 import Button from '../../components/button/Button';
+import Testimonials from '../testis/Testimonials';
 import topHomeImage from "../../assets/programming-banner.webp"
 import featureImageLeft from "../../assets/featrues-img-01.webp"
 import featureImageCenter from "../../assets/featrues-img-02.webp"
@@ -12,7 +13,11 @@ import courseImageCenter from "../../assets/course-img-2.jpg"
 import courseImageRight from "../../assets/course-img-3.jpg"
 import studentImageOne from "../../assets/testimonial-01.png"
 import studentImageTwo from "../../assets/testimonial-02.png"
+import studentImageBottomOne from "../../assets/course-40-590x430.jpg"
 import { HiCheck } from "react-icons/hi";
+import { FiArrowRight } from 'react-icons/fi';
+import { FaLaptopCode, FaUserGraduate } from "react-icons/fa";
+
 
 
 
@@ -22,72 +27,127 @@ export default function HomePage() {
     alert('Button clicked!');
   };
 
+  const [bgPosition, setBgPosition] = useState({
+    mainBg: '32% 25%, 100% 65%, 90% 50%, 90% 25%, 40% 65%, 40% 100%, 92% 39%',
+  });
+
+  const [aboutBgPosition, setAboutBgPosition] = useState({
+    aboutBg: '10% 1%, 1% 40%, 100% 100%',
+  });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { width, height, left, top } = currentTarget.getBoundingClientRect();
+    const xPos = (clientX - left) / width;
+    const yPos = (clientY - top) / height;
+
+    const newPosition = `
+      ${32 + xPos * 10}% ${25 + yPos * 10}%,
+      100% 65%, 
+      ${90 - xPos * 5}% ${50 + yPos * 10}%,
+      ${90 - xPos * 7}% ${25 + yPos * 5}%,
+      ${40 + xPos * 5}% ${65 + yPos * 10}%,
+      ${40 + xPos * 5}% ${100 - yPos * 10}%,
+      ${92 - xPos * 3}% ${39 + yPos * 5}%
+    `;
+
+    setBgPosition({ mainBg: newPosition });
+  };
+
+  const handleMouseMoveAbout = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { width, height, left, top } = currentTarget.getBoundingClientRect();
+    const xPos = (clientX - left) / width;
+    const yPos = (clientY - top) / height;
+
+    const newPosition = `
+      ${10 + xPos * 5}% ${1 + yPos * 5}%,
+      ${1 + xPos * 7}% ${40 + yPos * 7}%,
+      ${100 - xPos * 10}% ${100 - yPos * 10}%
+    `;
+
+    setAboutBgPosition({ aboutBg: newPosition });
+  };
+
   return (
     <Box>
-      {/* Hero Section */}
-      <Flex direction={['column', 'row']} align="center" justify="space-between" p={8} >
-        <Box maxW="500px" ml={"5rem"} mt={"-3rem"}>
-          <Heading as="h1" size="2xl" fontSize={"3.5rem"} fontWeight={"700"} className="homeBackground-container-imageSide">Build Your <Text as="span" color="red">Programming</Text> Skill with EdubLink</Heading>
-          {/* <Button mt={6} colorScheme="teal">Find Courses</Button> */}
-          <Button label="Find Courses" onClick={handleClick} mt={"1rem"} />
-          {/* <Button label="Large Success Button" size="large" color="success" />
-      <Button label="Danger Button" color="danger" disabled={true} />  */}
-        </Box>
-        <Box className="homeBackground-container-image">
-          <Image
-            src={topHomeImage}
-            alt="student avatar Image"
-            mt={"10rem"}
-            ml={"10rem"}
-            className='forground-image'
-          />
-        </Box>
-      </Flex>
-
-      {/* <ChakraProvider>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,138.7C1120,149,1280,203,1360,229.3L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-
-      <Box p={5} minH="100vh">
-        <VStack spacing={5}>
-          <HStack spacing={10}>
-            <Box>
-              <Image src="your-logo-url" alt="Logo" boxSize="100px" />
-            </Box>
-            <Text fontSize="2xl" fontWeight="bold">Your Title Here</Text>
-          </HStack>
-          
-          <HStack spacing={4}>
-            <Button colorScheme="teal">Button 1</Button>
-            <Button colorScheme="teal">Button 2</Button>
-          </HStack>
-          
-          <Box>
-            <Text fontSize="xl">Some content here...</Text>
-          </Box>
-        </VStack>
+    <Flex direction={['column', 'row']} align="center" justify="space-between" p={8} onMouseMove={handleMouseMove}>
+      <Box maxW="500px" ml={"5rem"} mt={"-3rem"}>
+        <Heading as="h1" size="2xl" fontSize={"3.5rem"} fontWeight={"700"} className='movingShape'>
+          Build Your <Text as="span" color="red">Programming</Text> Skill with EdubLink
+        </Heading>
+        <Text>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.</Text>
+        <Button
+      label="Find Courses"
+      onClick={handleClick}
+      icon={<FiArrowRight />} // Pass the right arrow icon as prop
+      mt={"1rem"}
+    />    
       </Box>
-    </ChakraProvider> */}
 
-      {/* About Section */}
-      <Flex direction={['column', 'row']} align="center" justify="space-between" py={12} px={8}>
-        <Box className="homeBackground-container-imageAbout">
-          <Image marginLeft={"12rem"} mt={"10rem"} src={aboutImage} alt="About Image" width={"600px"} height={"400px"} className='aboutImage' />
+      <Box className="homeBackground-container-image" style={{ backgroundPosition: bgPosition.mainBg }}>
+        <Image
+          src={topHomeImage}
+          alt="student avatar Image"
+          mt={"10rem"}
+          ml={"10rem"}
+          className='foreground-image'
+        />
+      </Box>
+    </Flex>
+
+    <Box mt={"-17rem"}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,138.7C1120,149,1280,203,1360,229.3L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+
+        <Flex direction={["column", "row"]} justify="space-around" align="center" pt={10} mt={"-9rem"}>
+        <Flex direction="row" align="center" textAlign="left" mb={6}>
+        <Box
+          bg="white"
+          borderRadius="50%"
+          boxSize="80px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          mr={4}
+        >
+          {/* Icon from react-icons */}
+          <FaLaptopCode size="40px" color="#6b46c1" />
         </Box>
-        <Box maxW="400px" textAlign="left">
-          <Text color={"grey"} fontWeight={"500"}>ABOUT US</Text>
-          <Heading as="h2" size="lg" fontSize={"2.5rem"}>Leading the<br /> Way in Software Development</Heading>
-          <Text mt={4}>A great platform to grow your skills with online learning. Start now to access our online courses and resources.</Text>
-          <Text><strong mt={"1rem"}><HiCheck style={{color:"red"}}/>   </strong>
-            Education award achived</Text>
-          <Text><strong><HiCheck style={{color:"red"}} /> </strong>Available online courses</Text>
-          <Button label="Learn more" onClick={handleClick} mt={"1rem"} />
+        <Box>
+          <Heading as="h3" size="md">
+            3,020
+          </Heading>
+          <Text>Online Courses</Text>
         </Box>
       </Flex>
 
-      {/* Features Section */}
-      <VStack spacing={8} py={12} px={8}>
-        <Text color={"red"}>FEATURES</Text>
-        <Heading as="h2" width={"55%"} fontSize={"2.5rem"} fontWeight={"700"} align={"center"} justify={"center"}>Emerging Technologies and Trends in Software Development</Heading>
+      {/* Second Box: Top Instructors */}
+      <Flex direction="row" align="center" textAlign="left" mb={6} mr={"40rem"}>
+        <Box
+          bg="white"
+          borderRadius="50%"
+          boxSize="80px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          ml={4}
+        >
+          {/* Another Icon from react-icons */}
+          <FaUserGraduate size="40px" color="#e53e3e" />
+        </Box>
+        <Box>
+          <Heading as="h3" size="md">
+            Top
+          </Heading>
+          <Text>Instructors</Text>
+        </Box>
+      </Flex>
+        </Flex>
+      </Box>
+   {/* Features Section */}
+   <VStack spacing={8} py={12} px={8}>
+        <Text color={"red"} mt={"9rem"}>FEATURES</Text>
+        <Heading as="h2" mt={"-1rem"} width={"55%"} fontSize={"2.5rem"} fontWeight={"700"} align={"center"} justify={"center"}>Emerging Technologies and Trends in Software Development</Heading>
         <SimpleGrid columns={[1, 2, 3]} spacing={10}>
           <Box p={6} className='featuresShadow' width={"85%"}>
             <Heading as="h4" size="md" align={"center"}>Web Development</Heading>
@@ -108,7 +168,8 @@ export default function HomePage() {
         </SimpleGrid>
       </VStack>
 
-      <VStack spacing={8} py={"1rem"} px={3} className='backgroundgradientOnly' width={"60%"} mx={"15rem"} my={"5rem"} >
+{/* another one */}
+<VStack spacing={8} py={"1rem"} px={"3"} className='backgroundgradientOnly' width={"55%"} mx={"20rem"} my={"5rem"} >
         <SimpleGrid columns={[1, 2, 3]} spacing={10} className='backgroundImageOnly'>
           <Box>
             <Text fontSize={"1.5rem"} color={"white"}>Get In Touch:</Text>
@@ -123,137 +184,186 @@ export default function HomePage() {
         </SimpleGrid>
       </VStack>
 
+      {/* About Section */}
+      <Flex direction={['column', 'row']} align="center" justify="space-between" py={12} px={8} onMouseMove={handleMouseMoveAbout}>
+        <Box className="homeBackground-container-imageAbout" style={{ backgroundPosition: aboutBgPosition.aboutBg }}>
+          <Image marginLeft={"12rem"} mt={"10rem"} src={aboutImage} alt="About Image" width={"600px"} height={"400px"} className='aboutImage' />
+        </Box>
+        <Box maxW="400px" textAlign="left">
+          <Text color={"grey"} fontWeight={"500"}>ABOUT US</Text>
+          <Heading as="h2" size="lg" fontSize={"2.5rem"}>Leading the<br /> Way in Software Development</Heading>
+          <Text mt={4}>A great platform to grow your skills with online learning. Start now to access our online courses and resources.</Text>
+          <Text><strong mt={"1rem"}><HiCheck style={{color:"red"}}/></strong> Education award achieved</Text>
+          <Text><strong><HiCheck style={{color:"red"}}/></strong> Available online courses</Text>
+          <Button label="Learn more" onClick={handleClick} mt={"1rem"} />
+        </Box>
+      </Flex>
+
       {/* Courses Section */}
-      <VStack spacing={8}  ml={"2rem"}>
-        <Text fontWeight={"bold"} color={"grey"}>POPULAR COURSE</Text>
+      <VStack spacing={8}   bg={"#F0F4F5"} mt={"8rem"}>
+        <Text fontWeight={"bold"} color={"grey"} mt={"8rem"}>POPULAR COURSE</Text>
         <Heading as="h2" size="lg" mt={"-1rem"} fontSize={"2.5rem"}>Pick A Course To Get Started</Heading>
-        <SimpleGrid columns={[1, 2, 3]} spacing={10} pt={"10rem"}>
-          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"85%"}>
-            <Image src={courseImageLeft} alt="courseImage" mb={4} width={"270px"} height={"200px"}  mt={"-6rem"} ml={"2rem"}/>
+        <SimpleGrid columns={[1, 2, 3]} spacing={10} pt={"8rem"} width={"90%"}>
+          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
+            <Image src={courseImageLeft} alt="courseImage" mb={4} width={"270px"} height={"200px"}  mt={"-6rem"} ml={"1.2rem"}/>
             <Heading as="h3" size="md" fontWeight={"600"} ml={"1rem"} align={"left"}>The Complete Python Bootcamp From Zero to Hero</Heading>
             <Text mt={2}>A comprehensive course for front-end Cdevelopers.</Text>
           </Box>
-          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"85%"}>
-            <Image src={courseImageRight} alt="courseImage" mb={4}width={"270px"} height={"200px"}   mt={"-6rem"} ml={"2rem"}/>
+          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
+            <Image src={courseImageRight} alt="courseImage" mb={4}width={"270px"} height={"200px"}   mt={"-6rem"} ml={"1.3rem"}/>
             <Heading as="h3" size="md" fontWeight={"600"}  align={"center"}>Advanced Java Programming with Eclipse</Heading>
             <Text mt={2}>Master Java with advanced concepts and applications.</Text>
           </Box>
-          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"85%"}>
-            <Image src={courseImageCenter} alt="courseImage" mb={4} width={"270px"} height={"200px"}  mt={"-6rem"} ml={"2rem"}/>
+          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
+            <Image src={courseImageCenter} alt="courseImage" mb={4} width={"270px"} height={"200px"}  mt={"-6rem"} ml={"1.3rem"}/>
             <Heading as="h3" size="md" fontWeight={"600"} ml={"1rem"} align={"left"}>Getting Started With PHP And MySQL For Beginners</Heading>
             <Text mt={2}>Learn Python & PHP for back-end web development.</Text>
           </Box>
         </SimpleGrid>
-        <Button label="Brouse Course" onClick={handleClick} mt={"2rem"} />
-
+        <Button label="Brouse Course" onClick={handleClick} mb={"2rem"} />
       </VStack>
 
       {/* FAQ Section */}
-      <Flex direction={['column', 'row']} align="center" justify="space-between" py={12} px={8}>
-        <Box maxW="500px" ml={"5rem"} mt={"3rem"}>
-          <Text color={"grey"}>FAQ&apos;s</Text>
-          <Heading as="h1" fontSize={"2.5rem"} fontWeight={"700"}>Learn Your Best Education Culture with Edublink</Heading>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt labore dolore magna.
+      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10}>
+      <Box p={10} >
+        <Text>FAQ&apos;s</Text>
+      <Heading mb={5}>Learn Your Best Education Culture with Edublink</Heading>
+      <Text mb={10}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna.
+      </Text>
+      <Text color={"#30b979"}>General Questions</Text>
+      <Text>Community</Text>
+      <Text>Support</Text>
+    </Box>
+    <Box p={10}>
+      <Accordion allowToggle>
+        <AccordionItem>
+          <AccordionButton>
+            <Box flex="1" textAlign="left">How can I contact a school directly?</Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionButton>
+            <Box flex="1" textAlign="left">How do I find a school where I want to study?</Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionButton>
+            <Box flex="1" textAlign="left">Where should I study abroad?</Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </Box>
+    </Grid>
+
+  <Testimonials/>
+
+ <Box p={10}>
+      {/* Ebook Download Section */}
+      <Flex
+        direction={{ base: 'column', md: 'row' }}
+        alignItems="center"
+        justifyContent="space-between"
+        mb={10}
+        bg="gray.50"
+        p={10}
+        borderRadius="md"
+      >
+        {/* Image */}
+        <Image
+          src=""
+          alt="Ebook Illustration"
+          boxSize="200px"
+          mb={{ base: 5, md: 0 }}
+        />
+        {/* Text and Button */}
+        <Box textAlign={{ base: 'center', md: 'left' }} ml={{ md: 10 }}>
+          <Heading mb={3}>Download Our Free Programming Ebook From EduBlink</Heading>
+          <Text mb={5}>
+            Learn programming with this free ebook. Discover HTML, CSS, JavaScript, and more!
           </Text>
-          <Text>General Questions</Text>
-          <Text>Community</Text>
-          <Text>Support</Text>
-        </Box>
-
-        <Box maxW="500px" textAlign="left" mr={"5rem"}>
-          <Accordion allowToggle>
-            <AccordionItem >
-              <h2>
-                <AccordionButton>
-                  <Text as='span' flex='1' textAlign='left' border={"none"}>Section 1 title</Text>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
-
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box as='span' flex='1' textAlign='left'>
-                    Section 2 title
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
+          <Button colorScheme="teal" size="lg">
+            Download ebook now ➜
+          </Button>
         </Box>
       </Flex>
 
+      {/* Latest Articles Section */}
+      <Heading mb={5} textAlign="center">Get News with EduBlink</Heading>
+      <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6}>
+        {/* Article 1 */}
+        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
+          <Image
+            src={courseImageRight}
+            alt="Article Image"
+            mb={3}
+            borderRadius="md"
+          />
+          <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
+          <Heading as="h3" fontSize="lg" mb={3}>
+            Voices from the Learning Education Hub
+          </Heading>
+          <Text fontSize="sm" color="gray.600">
+            13 Nov, 2023 | 0 Comments
+          </Text>
+          <Text fontSize="sm" mt={2}>
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </Text>
+        </GridItem>
 
-      {/* <VStack spacing={8} py={12} px={8}>
-        <Flex width={"50%"}>
-        <Heading as="h2" size="lg">FAQ </Heading>
-        </Flex>
-      
-      </VStack> */}
+        {/* Article 2 */}
+        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
+          <Image
+            src={studentImageBottomOne}
+            alt="Article Image"
+            mb={3}
+            borderRadius="md"
+          />
+          <Text fontSize="xs" color="gray.500" mb={2}>SCIENCE</Text>
+          <Heading as="h3" fontSize="lg" mb={3}>
+            Stories from the Educational Front at Classroom
+          </Heading>
+          <Text fontSize="sm" color="gray.600">
+            10 Nov, 2023 | 0 Comments
+          </Text>
+          <Text fontSize="sm" mt={2}>
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </Text>
+        </GridItem>
 
-      {/* Testimonial Section */}
-      <VStack spacing={8} py={12} px={8}>
-        <Text color={"grey"}>TESTIMONIALS</Text>
-        <Heading as="h2" size="lg" mt={"-1rem"} width={"30%"} fontSize={"2.5rem"} align={"center"}>What Our Students Have To Say</Heading>
-
-        <SimpleGrid columns={[1, 2, 3]} spacing={10} >
-
-
-          <Box  className='featuresShadow' width={"100%"} ml={"10rem"} px={"3rem"} py={"4rem"}>
-            <Text>“Edublink helped me develop skills that are invaluable in my career!”</Text>
-            <Box p={6} shadow="md" borderWidth="1px" display={"flex"}>
-              <Flex>
-                <Image src={courseImageLeft} alt="courseImage" mb={4} width={"60px"} height={"60px"} borderRadius={"50%"} />
-              </Flex>
-              <Flex>
-                <Text mt={4}>- David Owen, Student</Text>
-
-              </Flex>
-            </Box>
-          </Box>
-
-          <Box  className='featuresShadow' width={"100%"} ml={"20rem"} px={"3rem"} py={"4rem"}>
-            <Text>“Edublink helped me develop skills that are invaluable in my career!”</Text>
-            <Box p={6} shadow="md" borderWidth="1px" display={"flex"}>
-              <Flex>
-                <Image src={studentImageOne} alt="courseImage" mb={4} width={"60px"} height={"60px"} borderRadius={"50%"} />
-              </Flex>
-              <Flex>
-                <Text mt={4}>- David Owen, Student</Text>
-
-              </Flex>
-            </Box>
-          </Box>
-
-        </SimpleGrid>
-      </VStack>
-
-      {/* Newsletter Section */}
-      <VStack spacing={8} py={12} px={8} bg="gray.100">
-        <Text color={"grey"}>LATEST ARTICLES</Text>
-        <Heading as="h2" size="lg">Get News with Edublink</Heading>
-      
-      </VStack>
-
-      {/* Footer */}
-      <Box bg="gray.900" color="white" py={6} textAlign="center">
-        <Text>© 2024 EdubLink. All rights reserved.</Text>
-      </Box>
+        {/* Article 3 */}
+        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
+          <Image
+            src={courseImageCenter}
+            alt="Article Image"
+            mb={3}
+            borderRadius="md"
+          />
+          <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
+          <Heading as="h3" fontSize="lg" mb={3}>
+            Connecting the Dots in Education with Learning Nexus
+          </Heading>
+          <Text fontSize="sm" color="gray.600">
+            8 Nov, 2023 | 0 Comments
+          </Text>
+          <Text fontSize="sm" mt={2}>
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </Text>
+        </GridItem>
+      </Grid>
+    </Box>
     </Box>
   );
 }

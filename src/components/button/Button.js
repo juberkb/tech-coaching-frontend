@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import "./button.css"
+import { FiArrowRight } from 'react-icons/fi'; // Import right arrow icon
+import './button.css';
 
-const Button = ({ label, onClick, type = 'button', size = 'medium', color = 'primary', disabled = false }) => {
+const Button = ({ label, onClick, type = 'button', size = 'medium', color = 'primary', disabled = false, icon }) => {
   return (
     <button
       type={type}
@@ -10,26 +11,27 @@ const Button = ({ label, onClick, type = 'button', size = 'medium', color = 'pri
       className={`btn btn-${size} btn-${color}`}
       disabled={disabled}
     >
-      {label}
+      <span>{label}</span>
+      {icon && <span className="btn-icon">{icon}</span>} {/* Render the icon if provided */}
     </button>
   );
 };
 
-// PropTypes to define expected props and types
 Button.propTypes = {
-  label: PropTypes.string.isRequired, 
-  onClick: PropTypes.func, // Function to call on clic
-  type: PropTypes.oneOf(['button', 'submit', 'reset']), 
-  size: PropTypes.oneOf(['small', 'medium', 'large']), 
-  disabled: PropTypes.bool, // Whether the button is disabled
-}
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  disabled: PropTypes.bool,
+  icon: PropTypes.element, // Accepting an icon element as a prop
+};
 
-// Default props in case they are not provided
 Button.defaultProps = {
   onClick: () => {},
   type: 'button',
   size: 'medium',
   disabled: false,
+  icon: <FiArrowRight />, // Set a default icon (right arrow)
 };
 
 export default Button;
