@@ -269,8 +269,8 @@
 .movingShape {
   position: relative;
   background-image: url("../../assets/shape-15.png");
-  background-position: 10% 30%; /* Initial position */
-  background-size: 100px; /* Size of the shape */
+  background-position: 30% 30%; 
+  background-size: 100px; 
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
@@ -282,10 +282,10 @@
 /* Keyframes for the left-to-right movement */
 @keyframes moveBackground {
   0% {
-    background-position: 0% 5%; /* Start at the left */
+    background-position: 0% 30%; /* Start at the left */
   }
   100% {
-    background-position: 10rem 5%; /* Move to the right, within 5rem width */
+    background-position: 10rem 30%; /* Move to the right, within 5rem width */
   }
 }
 

@@ -73,17 +73,17 @@ export default function HomePage() {
 
   return (
     <Box>
-      <Flex direction={['column', 'row']} align="center" justify="space-between" p={8} onMouseMove={handleMouseMove}>
-        <Box maxW="500px" ml={"5rem"} mt={"-5rem"}>
-          <Heading as="h1" size="2xl" fontSize={"3.5rem"} fontWeight={"700"} className='movingShape'>
+      <Flex className='movingShape' mt={"-5rem"} direction={['column', 'row']} align="center" justify="space-between" p={8} onMouseMove={handleMouseMove}>
+        <Box maxW="500px" ml={"5rem"}  >
+          <Heading as="h1" size="2xl" fontSize={"3.5rem"} fontWeight={"700"} >
             Build Your <Text as="span" color="red">Programming</Text> Skill with EdubLink
           </Heading>
-          <Text>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.</Text>
+          <Text mb={6}>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.</Text>
           <Button
             label="Find Courses"
             onClick={handleClick}
-            icon={<FiArrowRight />} // Pass the right arrow icon as prop
-            mt={"1rem"}
+            icon={<FiArrowRight />} 
+            
           />
         </Box>
 
@@ -196,7 +196,7 @@ export default function HomePage() {
           <Heading as="h2" size="lg" fontSize={"2.5rem"}>Leading the<br /> Way in Software Development</Heading>
           <Text mt={4}>A great platform to grow your skills with online learning. Start now to access our online courses and resources.</Text>
           <Text><strong mt={"1rem"}><HiCheck style={{ color: "red" }} /></strong> Education award achieved</Text>
-          <Text><strong><HiCheck style={{ color: "red" }} /></strong> Available online courses</Text>
+          <Text mb={6}><strong><HiCheck style={{ color: "red" }} /></strong> Available online courses</Text>
           <Button label="Learn more" onClick={handleClick} mt={"1rem"} />
         </Box>
       </Flex>
@@ -205,7 +205,7 @@ export default function HomePage() {
       <VStack spacing={8} bg={"#F0F4F5"} mt={"8rem"} pb={"6rem"}>
         <Text fontWeight={"bold"} color={"grey"} mt={"8rem"}>POPULAR COURSE</Text>
         <Heading as="h2" size="lg" mt={"-1rem"} fontSize={"2.5rem"}>Pick A Course To Get Started</Heading>
-        <SimpleGrid columns={[1, 2, 3]} spacing={10} pt={"8rem"} width={"90%"}>
+        <SimpleGrid columns={[1, 2, 3]} spacing={10} pt={"8rem"} width={"90%"} mb={6}>
           <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
             <Box maxW={"400px"}
               borderRadius="md"
@@ -389,7 +389,7 @@ export default function HomePage() {
       <CustomMove />
       <Testimonials />
 {/* artical */}
-      <Box className='articalBgImage' p={"8rem"}>
+      <Box className='articalBgImage'>
         {/* Ebook Download Section */}
         <Flex
           direction={{ base: 'column', md: 'row' }}
@@ -413,19 +413,22 @@ export default function HomePage() {
           </Box>
           {/* Text and Button */}
           <Box textAlign={{ base: 'center', md: 'left' }} ml={{ md: 10 }} width={"50%"} className='articalBgText'>
-            <Heading as="h1" size="2xl" fontSize={"2.5rem"} fontWeight={"700"} mb={5}>
+            <Heading as="h1" size="2xl" fontSize={"2.5rem"} fontWeight={"700"} mb={12}>
               Download Our <br /> Free <Text as="span" color="red">Programming Ebook</Text> <br />Ebook From EduBlink
             </Heading>
-            <Button colorScheme="teal" size="lg">
-              Download ebook now ➜
-            </Button>
+            <Button
+            label="Download ebooks now"
+            onClick={handleClick}
+            icon={<FiArrowRight />} 
+            
+          />
           </Box>
         </Flex>
 
         {/* Latest Articles Section */}
         <Text textAlign="center" mt={"8rem"} mb={4}>LATEST ARTICLES</Text>
         <Heading mb={5} textAlign="center">Get News with EduBlink</Heading>
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6} >
+        <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6} p={"8rem"}>
           {/* Article 1 */}
           <GridItem bg="white" p={5} borderRadius="md" shadow="md">
             <Box maxW={"400px"}
