@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import "../../comman/Styles/allStyles.css"
-import { Box, Grid, GridItem, Avatar, HStack, ChakraProvider, VStack, Heading, Text, Image, Flex, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Stack, Input, IconButton } from '@chakra-ui/react';
+import { Box, Grid, GridItem, VStack, Heading, Text, Image, Flex, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon} from '@chakra-ui/react';
 import Button from '../../components/button/Button';
 import Testimonials from '../testis/Testimonials';
 import CustomMove from '../customMover/CustomMove';
@@ -20,6 +20,7 @@ import { PiStudent } from "react-icons/pi";
 import { FaLaptopCode, FaUserGraduate, FaRegComments, FaRegCheckSquare } from "react-icons/fa";
 
 import StarRatings from '../../comman/startRating/StarRatings';
+import FaqSection from '../Faq\'s/FaqSection';
 
 
 
@@ -82,8 +83,8 @@ export default function HomePage() {
           <Button
             label="Find Courses"
             onClick={handleClick}
-            icon={<FiArrowRight />} 
-            
+            icon={<FiArrowRight />}
+
           />
         </Box>
 
@@ -147,185 +148,259 @@ export default function HomePage() {
         </Flex>
       </Box>
       {/* Features Section */}
-      <VStack spacing={8} py={12} px={8}>
-        <Text color={"red"} mt={"9rem"}>FEATURES</Text>
-        <Heading as="h2" mt={"-1rem"} width={"55%"} fontSize={"2.5rem"} fontWeight={"700"} align={"center"} justify={"center"}>Emerging Technologies and Trends in Software Development</Heading>
-        <SimpleGrid columns={[1, 2, 3]} spacing={10}>
-          <Box p={6} className='featuresShadow' width={"85%"}>
-            <Heading as="h4" size="md" align={"center"}>Web Development</Heading>
-            <Text mt={2} align={"center"}>Build websites and applications with modern tools.</Text>
-            <Image src={featureImageLeft} alt="Web Dev" mb={4} ml={"2.5rem"} />
+      <VStack
+      spacing={8}
+      py={{ base: 8, md: 12 }} // Smaller padding for small screens, larger for medium and up
+      px={{ base: 4, md: 8 }}  // Smaller padding for small screens
+    >
+      <Text color="red" mt={{ base: "4rem", md: "9rem" }} fontSize={{ base: "1.25rem", md: "1.5rem" }} align="center">
+        FEATURES
+      </Text>
+      
+      <Heading
+        as="h2"
+        mt={{ base: 0, md: "-1rem" }} // Remove negative margin for small screens
+        width={{ base: "90%", md: "75%", lg: "55%" }} // Adjust width for different screen sizes
+        fontSize={{ base: "1.75rem", md: "2rem", lg: "2.5rem" }} // Responsive font sizes
+        fontWeight="700"
+        textAlign="center"
+      >
+        Emerging Technologies and Trends in Software Development
+      </Heading>
 
-          </Box>
-          <Box p={6} className='featuresShadow' width={"85%"}>
-            <Heading as="h4" size="md" align={"center"}>Top Instructors</Heading>
-            <Text mt={2} align={"center"}>Learn from the industry&apos;s best professionals.</Text>
-            <Image src={featureImageCenter} alt="Instructors" mb={4} ml={"2.5rem"} />
-          </Box>
-          <Box p={6} className='featuresShadow' width={"85%"}>
-            <Heading as="h4" size="md" align={"center"}>Online Certifications</Heading>
-            <Text mt={2} align={"center"}>Get certified in various programming disciplines.</Text>
-            <Image src={featureImageRight} alt="Certifications" mb={4} ml={"2.5rem"} />
-          </Box>
-        </SimpleGrid>
-      </VStack>
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }} // One column on small screens, 2 on medium, 3 on large
+        spacing={{ base: 6, md: 10 }} // Reduced spacing for small screens
+      >
+        <Box p={6} className="featuresShadow" width="100%">
+          <Heading as="h4" size="md" textAlign="center">
+            Web Development
+          </Heading>
+          <Text mt={2} textAlign="center" fontSize={{ base: "0.875rem", md: "1rem" }}>
+            Build websites and applications with modern tools.
+          </Text>
+          <Image src={featureImageLeft} alt="Web Dev" mb={4} mx="auto" /> {/* Centered image */}
+        </Box>
+
+        <Box p={6} className="featuresShadow" width="100%">
+          <Heading as="h4" size="md" textAlign="center">
+            Top Instructors
+          </Heading>
+          <Text mt={2} textAlign="center" fontSize={{ base: "0.875rem", md: "1rem" }}>
+            Learn from the industry's best professionals.
+          </Text>
+          <Image src={featureImageCenter} alt="Instructors" mb={4} mx="auto" /> {/* Centered image */}
+        </Box>
+
+        <Box p={6} className="featuresShadow" width="100%">
+          <Heading as="h4" size="md" textAlign="center">
+            Online Certifications
+          </Heading>
+          <Text mt={2} textAlign="center" fontSize={{ base: "0.875rem", md: "1rem" }}>
+            Get certified in various programming disciplines.
+          </Text>
+          <Image src={featureImageRight} alt="Certifications" mb={4} mx="auto" /> {/* Centered image */}
+        </Box>
+      </SimpleGrid>
+    </VStack>
 
       {/* another one */}
-      <VStack spacing={8} py={"1rem"} px={"3"} className='backgroundgradientOnly' width={"55%"} mx={"20rem"} my={"5rem"} >
-        <SimpleGrid columns={[1, 2, 3]} spacing={10} className='backgroundImageOnly'>
-          <Box>
-            <Text fontSize={"1.5rem"} color={"white"}>Get In Touch:</Text>
-            <Text fontSize={"1.5rem"} color={"white"} fontWeight={"bold"}>info@edublink</Text>
-          </Box>
-          <Box>
-            <Text align={"center"} mt={"3rem"} fontSize={"2rem"} fontWeight={"bold"} color={"whitesmoke"} > <strong> or </strong></Text>
-          </Box>
-          <Box>
-            <Text fontSize={"1.5rem"} color={"white"}> Call Us Via:</Text>
-            <Text fontSize={"1.5rem"} color={"white"} fontWeight={"bold"}>+01 123 5641 231</Text></Box>
-        </SimpleGrid>
-      </VStack>
+      <VStack
+      spacing={8}
+      py="1rem"
+      px={3}
+      className="backgroundgradientOnly"
+      width={{ base: "90%", md: "80%", lg: "55%" }} // Full width on small screens, reduced for larger screens
+      mx={{ base: "auto", lg: "20rem" }} // Center horizontally, and custom margin on large screens
+      my={{ base: "2rem", lg: "5rem" }} // Adjust vertical margin for small screens
+    >
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }} // Single column on small screens, 2 for medium, 3 for large
+        spacing={10}
+        className="backgroundImageOnly"
+      >
+        <Box>
+          <Text fontSize={{ base: "1.25rem", md: "1.5rem" }} color="white">
+            Get In Touch:
+          </Text>
+          <Text fontSize={{ base: "1.25rem", md: "1.5rem" }} color="white" fontWeight="bold">
+            info@edublink
+          </Text>
+        </Box>
+
+        <Box>
+          <Text
+            align="center"
+            mt={{ base: "1.5rem", md: "3rem" }} // Reduce top margin for smaller screens
+            fontSize={{ base: "1.75rem", md: "2rem" }}
+            fontWeight="bold"
+            color="whitesmoke"
+          >
+            <strong>or</strong>
+          </Text>
+        </Box>
+
+        <Box>
+          <Text fontSize={{ base: "1.25rem", md: "1.5rem" }} color="white">
+            Call Us Via:
+          </Text>
+          <Text fontSize={{ base: "1.25rem", md: "1.5rem" }} color="white" fontWeight="bold">
+            +01 123 5641 231
+          </Text>
+        </Box>
+      </SimpleGrid>
+    </VStack>
 
       {/* About Section */}
-      <Flex direction={['column', 'row']} align="center" justify="space-between" py={12} px={8} onMouseMove={handleMouseMoveAbout}>
-        <Box className="homeBackground-container-imageAbout" style={{ backgroundPosition: aboutBgPosition.aboutBg }}>
-          <Image marginLeft={"12rem"} mt={"10rem"} src={aboutImage} alt="About Image" width={"600px"} height={"400px"} className='aboutImage' />
-        </Box>
-        <Box maxW="400px" textAlign="left">
-          <Text color={"grey"} fontWeight={"500"}>ABOUT US</Text>
-          <Heading as="h2" size="lg" fontSize={"2.5rem"}>Leading the<br /> Way in Software Development</Heading>
-          <Text mt={4}>A great platform to grow your skills with online learning. Start now to access our online courses and resources.</Text>
-          <Text><strong mt={"1rem"}><HiCheck style={{ color: "red" }} /></strong> Education award achieved</Text>
-          <Text mb={6}><strong><HiCheck style={{ color: "red" }} /></strong> Available online courses</Text>
-          <Button label="Learn more" onClick={handleClick} mt={"1rem"} />
-        </Box>
-      </Flex>
+      <Flex
+      direction={{ base: 'column', lg: 'row' }} // Column layout for small screens, row for large
+      align="center"
+      justify="space-between"
+      py={12}
+      px={8}
+      onMouseMove={handleMouseMoveAbout}
+    >
+      {/* Conditional background image for larger screens */}
+      <Box
+        className="homeBackground-container-imageAbout"
+        display={{ base: 'block', md: 'block' }} // Hide background image on small screens
+        style={{ backgroundPosition: aboutBgPosition.aboutBg }}
+      >
+        <Image
+          marginLeft={{ base: '0', lg: '12rem' }}
+          mt={{ base: '2rem', lg: '10rem' }} // Adjust margin top for responsiveness
+          src={aboutImage}
+          alt="About Image"
+          width={{ base: '100%', lg: '600px' }} // 100% width for small screens, fixed width for large
+          height={{ base: 'auto', lg: '400px' }} // Auto height for small screens
+          className='aboutImage'
+        />
+      </Box>
+
+      <Box maxW="400px" textAlign="left" mt={{ base: '2rem', lg: '0' }}>
+        <Text color="grey" fontWeight="500">ABOUT US</Text>
+        <Heading as="h2" size="lg" fontSize={{ base: '2rem', lg: '2.5rem' }}>
+          Leading the<br /> Way in Software Development
+        </Heading>
+        <Text mt={4}>
+          A great platform to grow your skills with online learning. Start now to access our online courses and resources.
+        </Text>
+        <Text mt={4}>
+          <strong><HiCheck style={{ color: "red" }} /></strong> Education award achieved
+        </Text>
+        <Text mb={6}>
+          <strong><HiCheck style={{ color: "red" }} /></strong> Available online courses
+        </Text>
+        <Button onClick={handleClick} mt="1rem">
+          Learn more
+        </Button>
+      </Box>
+    </Flex>
 
       {/* Courses Section */}
-      <VStack spacing={8} bg={"#F0F4F5"} mt={"8rem"} pb={"6rem"}>
-        <Text fontWeight={"bold"} color={"grey"} mt={"8rem"}>POPULAR COURSE</Text>
-        <Heading as="h2" size="lg" mt={"-1rem"} fontSize={"2.5rem"}>Pick A Course To Get Started</Heading>
-        <SimpleGrid columns={[1, 2, 3]} spacing={10} pt={"8rem"} width={"90%"} mb={6}>
-          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
-            <Box maxW={"400px"}
+      <VStack
+      spacing={8}
+      bg="#F0F4F5"
+      mt={{ base: "4rem", md: "8rem" }} 
+      pb="6rem"
+    >
+      <Text
+        fontWeight="bold"
+        color="grey"
+        mt={{ base: "2rem", md: "8rem" }}  
+        fontSize={{ base: "1rem", md: "1.25rem" }} 
+      >
+        POPULAR COURSE
+      </Text>
+      
+      <Heading
+        as="h2"
+        size="lg"
+        mt="-1rem"
+        fontSize={{ base: "1.75rem", md: "2.5rem" }}  
+        textAlign="center"
+      >
+        Pick A Course To Get Started
+      </Heading>
+      
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }}  
+        spacing={{ base: 12, md: 10 }}  
+        pt={{ base: "4rem", md: "8rem" }}  
+        width="90%"
+        mb={6}
+      >
+        {[courseImageLeft, courseImageRight, courseImageCenter].map((imageSrc, index) => (
+          <Box
+            key={index}
+            p={6}
+            shadow="md"
+            borderWidth="1px"
+            className="featuresShadow"
+            width={{ base: "100%", md: "75%" }}  
+            ml={{ base: 0, md: "3rem" }}  
+            mb={{ base: "7rem", md: 0 }}  
+
+          >
+            <Box
+              maxW="400px"
               borderRadius="md"
-              overflow={"hidden"}
-              m={"auto"}
-              mt={"-7rem"}>
-              <Box as='figure' overflow={"hidden"}
+              overflow="hidden"
+              mt={{ base: "-7rem", md: "-7rem" }}  
+            >
+              <Box
+                as="figure"
+                overflow="hidden"
                 _hover={{
                   transform: "scale(1.1)",
                   filter: "grayscale(40%)",
                   transition: "transform 0.5s ease-in-out",
-                }}>
+                }}
+              >
                 <Image
-                  src={courseImageLeft}
-                  alt="Article Image"
+                  src={imageSrc}
+                  alt={`Course Image ${index + 1}`}
                   mb={3}
                   borderRadius="md"
-                  transition={"transform 0.5s ease-in-out"}
-                  width={"100%"}
+                  transition="transform 0.5s ease-in-out"
+                  width="100%"
                 />
               </Box>
             </Box>
             <Text>Business</Text>
-            <Heading as="h3" size="md" fontWeight={"600"} align={"left"}>Advanced Java Programming with Eclipse</Heading>
+            <Heading as="h3" size="md" fontWeight="600" align="left">
+              Advanced Java Programming with Eclipse
+            </Heading>
             <Text mt={2}>Master Java with advanced concepts and applications.</Text>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
+            <Flex align="center" color="grey.600" gap={2}>
               <StarRatings />
               <Text>(4.0/3 Ratings)</Text>
             </Flex>
-            <Text mt={2} color={"red"}>35$</Text>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <MdOutlinePlayLesson color='#30b979' />
+            <Text mt={2} color="red">35$</Text>
+            <Flex align="center" color="grey.600" gap={2}>
+              <MdOutlinePlayLesson color="#30b979" />
               <Text> 7 Lesson</Text>
               <Text>|</Text>
-              <PiStudent color='#30b979' />
+              <PiStudent color="#30b979" />
               <Text>663 students</Text>
             </Flex>
           </Box>
-          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
-            <Box maxW={"400px"}
-              borderRadius="md"
-              overflow={"hidden"}
-              m={"auto"}
-              mt={"-7rem"}>
-              <Box as='figure' overflow={"hidden"}
-                _hover={{
-                  transform: "scale(1.1)",
-                  filter: "grayscale(40%)",
-                  transition: "transform 0.5s ease-in-out",
-                }}>
-                <Image
-                  src={courseImageRight}
-                  alt="Article Image"
-                  mb={3}
-                  borderRadius="md"
-                  transition={"transform 0.5s ease-in-out"}
-                  width={"100%"}
-                />
-              </Box>
-            </Box>
-            <Text>Business</Text>
-            <Heading as="h3" size="md" fontWeight={"600"} align={"left"}>Advanced Java Programming with Eclipse</Heading>
-            <Text mt={2}>Master Java with advanced concepts and applications.</Text>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <StarRatings />
-              <Text>(4.0/3 Ratings)</Text>
-            </Flex>
-            <Text mt={2} color={"red"}>35$</Text>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <MdOutlinePlayLesson color='#30b979' />
-              <Text> 7 Lesson</Text>
-              <Text>|</Text>
-              <PiStudent color='#30b979' />
-              <Text>663 students</Text>
-            </Flex>
-          </Box>
-          <Box p={6} shadow="md" borderWidth="1px" className='featuresShadow' width={"75%"} ml={"3rem"}>
-            <Box maxW={"400px"}
-              borderRadius="md"
-              overflow={"hidden"}
-              m={"auto"}
-              mt={"-7rem"}>
-              <Box as='figure' overflow={"hidden"}
-                _hover={{
-                  transform: "scale(1.1)",
-                  filter: "grayscale(40%)",
-                  transition: "transform 0.5s ease-in-out",
-                }}>
-                <Image
-                  src={courseImageCenter}
-                  alt="Article Image"
-                  mb={3}
-                  borderRadius="md"
-                  transition={"transform 0.5s ease-in-out"}
-                  width={"100%"}
-                />
-              </Box>
-            </Box>
-            <Text>Business</Text>
-            <Heading as="h3" size="md" fontWeight={"600"} align={"left"}>Advanced Java Programming with Eclipse</Heading>
-            <Text mt={2}>Master Java with advanced concepts and applications.</Text>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <StarRatings />
-              <Text>(4.0/3 Ratings)</Text>
-            </Flex>
-            <Text mt={2} color={"red"}>35$</Text>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <MdOutlinePlayLesson color='#30b979' />
-              <Text> 7 Lesson</Text>
-              <Text>|</Text>
-              <PiStudent color='#30b979' />
-              <Text>663 students</Text>
-            </Flex>
-          </Box>
-        </SimpleGrid>
-        <Button label="Brouse Course" onClick={handleClick} mb={"2rem"} />
-      </VStack>
+        ))}
+      </SimpleGrid>
+
+      <Button
+        label="Browse Course"
+        onClick={handleClick}
+        mb="2rem"
+        colorScheme="teal"
+        size={{ base: "sm", md: "md" }}  // Responsive button size
+      >
+        Browse Course
+      </Button>
+    </VStack>
 
       {/* FAQ Section */}
-      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10} p={10} className='faqsBGImage'>
+      {/* <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10} p={10} className='faqsBGImage'>
         <Box p={10} ml={"3rem"}>
           <Text>FAQ&apos;s</Text>
           <Heading mb={5} fontWeight={"600"}>Learn Your Best Education<br /> Culture with Edublink</Heading>
@@ -385,165 +460,211 @@ export default function HomePage() {
             </AccordionItem>
           </Accordion>
         </Box>
-      </Grid>
+      </Grid> */}
+      <FaqSection/>
+
       <CustomMove />
+
       <Testimonials />
-{/* artical */}
+
+      {/* artical */}
       <Box className='articalBgImage'>
-        {/* Ebook Download Section */}
-        <Flex
-          direction={{ base: 'column', md: 'row' }}
-          alignItems="center"
-          justifyContent="space-between"
-          mb={10}
-          bg="gray.50"
-          p={10}
-          borderRadius="md"
-          height={"500px"}
-        >
-          {/* Image */}
-          <Box width={"50%"} className='articalBgAvatar'>
-            <Image
-              src={featureImageLeft}
-              alt="Ebook Illustration"
-              boxSize="300px"
-              ml={"5rem"}
-            // mb={{ base: 5, md: 0 }}
-            />
+      {/* Ebook Download Section */}
+      <Flex 
+  direction={{ base: 'column', md: 'row' }} // Column layout on small screens
+  alignItems="center"
+  justifyContent="space-between"
+  mb={10}
+  bg="gray.50"
+  p={10}
+  borderRadius="md"
+  height={{ base: 'auto', md: '500px' }} // Auto height on small screens
+  className='articalBgImage' // Background for large screens
+>
+  {/* Image Section */}
+  <Box
+    width={{ base: '100%', md: '50%' }}
+    className="articalBgAvatar" // Background for large screens
+    display={{ base: 'block', md: 'block' }} // Hide background on small screens
+    ml={{ base: "7.5rem", md: 0 }}
+
+  >
+    <Image
+      src={featureImageLeft}
+      alt="Ebook Illustration"
+      boxSize={{ base: '200px', md: '300px' }} // Smaller size for small devices
+      mb={{ base: 5, md: 0 }}
+      mx="auto" // Center image on small devices
+    />
+  </Box>
+
+  {/* Text and Button Section */}
+  <Box
+    textAlign={{ base: 'Left', md: 'left' }}
+    ml={{ base: "5rem", md: 10 }}
+    width={{ base: '100%', md: '50%' }} // Full width on small screens
+    className='articalBgText'
+  >
+    <Heading
+      as="h1"
+      size="2xl"
+      fontSize={{ base: '1.8rem', md: '2.5rem' }}
+      fontWeight="700"
+      mb={6}
+    >
+      Download Our <br /> Free{' '}
+      <Text as="span" color="red">Programming Ebook</Text>{' '}
+      <br /> From EduBlink
+    </Heading>
+
+    <Button
+      label="Download ebooks now"
+      onClick={handleClick}
+      rightIcon={<FiArrowRight />}
+    />
+  </Box>
+</Flex>
+
+
+      {/* Latest Articles Section */}
+      <Text textAlign="center" fontWeight={"700"} color={"gray"} mt={{ base: '4rem', md: '8rem' }} mb={4}>LATEST ARTICLES</Text>
+      <Heading mb={5} textAlign="center">Get News with EduBlink</Heading>
+
+      <Grid
+        templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} 
+        gap={6}
+        p={{ base: '2rem', md: '8rem' }} 
+      >
+        {/* Article 1 */}
+        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
+          <Box
+            maxW="400px"
+            borderRadius="md"
+            overflow="hidden"
+            mx="auto"
+          >
+            <Box
+              as='figure'
+              overflow="hidden"
+              _hover={{
+                transform: "scale(1.1)",
+                filter: "grayscale(40%)",
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
+              <Image
+                src={courseImageRight}
+                alt="Article Image"
+                mb={3}
+                borderRadius="md"
+                transition="transform 0.5s ease-in-out"
+                width="100%"
+              />
+            </Box>
           </Box>
-          {/* Text and Button */}
-          <Box textAlign={{ base: 'center', md: 'left' }} ml={{ md: 10 }} width={"50%"} className='articalBgText'>
-            <Heading as="h1" size="2xl" fontSize={"2.5rem"} fontWeight={"700"} mb={12}>
-              Download Our <br /> Free <Text as="span" color="red">Programming Ebook</Text> <br />Ebook From EduBlink
-            </Heading>
-            <Button
-            label="Download ebooks now"
-            onClick={handleClick}
-            icon={<FiArrowRight />} 
-            
-          />
+          <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
+          <Heading as="h3" fontSize="lg" mb={3}>
+            Voices from the Learning Education Hub
+          </Heading>
+          <Flex align="center" color="gray.600" gap={2}>
+            <FaRegCheckSquare color='#30b979' />
+            <Text>12 Nov, 2023</Text>
+            <Text>|</Text>
+            <FaRegComments color='#30b979' />
+            <Text>0 Comments</Text>
+          </Flex>
+          <Text fontSize="sm" mt={2}>
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </Text>
+        </GridItem>
+
+        {/* Article 2 */}
+        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
+          <Box
+            maxW="400px"
+            borderRadius="md"
+            overflow="hidden"
+            mx="auto"
+          >
+            <Box
+              as='figure'
+              overflow="hidden"
+              _hover={{
+                transform: "scale(1.1)",
+                filter: "grayscale(40%)",
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
+              <Image
+                src={studentImageBottomOne}
+                alt="Article Image"
+                mb={3}
+                borderRadius="md"
+                transition="transform 0.5s ease-in-out"
+                width="100%"
+              />
+            </Box>
           </Box>
-        </Flex>
+          <Text fontSize="xs" color="gray.500" mb={2}>SCIENCE</Text>
+          <Heading as="h3" fontSize="lg" mb={3}>
+            Stories from the Educational Front at Classroom
+          </Heading>
+          <Flex align="center" color="gray.600" gap={2}>
+            <FaRegCheckSquare color='#30b979' />
+            <Text>12 Nov, 2023</Text>
+            <Text>|</Text>
+            <FaRegComments color='#30b979' />
+            <Text>0 Comments</Text>
+          </Flex>
+          <Text fontSize="sm" mt={2}>
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </Text>
+        </GridItem>
 
-        {/* Latest Articles Section */}
-        <Text textAlign="center" mt={"8rem"} mb={4}>LATEST ARTICLES</Text>
-        <Heading mb={5} textAlign="center">Get News with EduBlink</Heading>
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={6} p={"8rem"}>
-          {/* Article 1 */}
-          <GridItem bg="white" p={5} borderRadius="md" shadow="md">
-            <Box maxW={"400px"}
-              borderRadius="md"
-              overflow={"hidden"}
-              m={"auto"}>
-              <Box as='figure' overflow={"hidden"}
-                _hover={{
-                  transform: "scale(1.1)",
-                  filter: "grayscale(40%)",
-                  transition: "transform 0.5s ease-in-out",
-                }}>
-                <Image
-                  src={courseImageRight}
-                  alt="Article Image"
-                  mb={3}
-                  borderRadius="md"
-                  transition={"transform 0.5s ease-in-out"}
-                  width={"100%"}
-                />
-              </Box>
+        {/* Article 3 */}
+        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
+          <Box
+            maxW="400px"
+            borderRadius="md"
+            overflow="hidden"
+            mx="auto"
+          >
+            <Box
+              as='figure'
+              overflow="hidden"
+              _hover={{
+                transform: "scale(1.1)",
+                filter: "grayscale(40%)",
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
+              <Image
+                src={courseImageCenter}
+                alt="Article Image"
+                mb={3}
+                borderRadius="md"
+                transition="transform 0.5s ease-in-out"
+                width="100%"
+              />
             </Box>
-            <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
-            <Heading as="h3" fontSize="lg" mb={3}>
-              Voices from the Learning Education Hub
-            </Heading>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <FaRegCheckSquare color='#30b979' />
-              <Text>12 Nov, 2023</Text>
-              <Text>|</Text>
-              <FaRegComments color='#30b979' />
-              <Text>0 Comments</Text>
-            </Flex>
-            <Text fontSize="sm" mt={2}>
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-            </Text>
-          </GridItem>
-
-          {/* Article 2 */}
-          <GridItem bg="white" p={5} borderRadius="md" shadow="md">
-            <Box maxW={"400px"}
-              borderRadius="md"
-              overflow={"hidden"}
-              m={"auto"}>
-              <Box as='figure' overflow={"hidden"}
-                _hover={{
-                  transform: "scale(1.1)",
-                  filter: "grayscale(40%)",
-                  transition: "transform 0.5s ease-in-out",
-                }}>
-                <Image
-                  src={studentImageBottomOne}
-                  alt="Article Image"
-                  mb={3}
-                  borderRadius="md"
-                  transition={"transform 0.5s ease-in-out"}
-                  width={"100%"}
-                />
-              </Box>
-            </Box>
-            <Text fontSize="xs" color="gray.500" mb={2}>SCIENCE</Text>
-            <Heading as="h3" fontSize="lg" mb={3}>
-              Stories from the Educational Front at Classroom
-            </Heading>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <FaRegCheckSquare color='#30b979' />
-              <Text>12 Nov, 2023</Text>
-              <Text>|</Text>
-              <FaRegComments color='#30b979' />
-              <Text>0 Comments</Text>
-            </Flex>
-            <Text fontSize="sm" mt={2}>
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-            </Text>
-          </GridItem>
-
-          {/* Article 3 */}
-          <GridItem bg="white" p={5} borderRadius="md" shadow="md" >
-            <Box maxW={"400px"}
-              overflow={"hidden"}
-              borderRadius="md"
-              m={"auto"}>
-              <Box as='figure' overflow={"hidden"}
-                _hover={{
-                  transform: "scale(1.1)",
-                  filter: "grayscale(40%)",
-                  transition: "transform 0.5s ease-in-out",
-                }}>
-                <Image
-                  src={courseImageCenter}
-                  alt="Article Image"
-                  mb={3}
-                  borderRadius="md"
-                  transition={"transform 0.5s ease-in-out"}
-                  width={"100%"}
-                />
-              </Box>
-            </Box>
-            <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
-            <Heading as="h3" fontSize="lg" mb={3}>
-              Connecting the Dots in Education with Learning Nexus
-            </Heading>
-            <Flex align={"center"} color={"grey.600"} gap={2}>
-              <FaRegCheckSquare color='#30b979' />
-              <Text>12 Nov, 2023</Text>
-              <Text>|</Text>
-              <FaRegComments color='#30b979' />
-              <Text>0 Comments</Text>
-            </Flex>
-            <Text fontSize="sm" mt={2}>
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-            </Text>
-          </GridItem>
-        </Grid>
-      </Box>
+          </Box>
+          <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
+          <Heading as="h3" fontSize="lg" mb={3}>
+            Connecting the Dots in Education with Learning Nexus
+          </Heading>
+          <Flex align="center" color="gray.600" gap={2}>
+            <FaRegCheckSquare color='#30b979' />
+            <Text>12 Nov, 2023</Text>
+            <Text>|</Text>
+            <FaRegComments color='#30b979' />
+            <Text>0 Comments</Text>
+          </Flex>
+          <Text fontSize="sm" mt={2}>
+            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+          </Text>
+        </GridItem>
+      </Grid>
+    </Box>
     </Box>
   );
 }

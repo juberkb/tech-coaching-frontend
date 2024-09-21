@@ -53,7 +53,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsService />} /> */}
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </header>
       </ChakraProvider>
