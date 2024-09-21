@@ -1,0 +1,11 @@
+/* stars css */
+.star-rating {
+    font-size: 20px;
+    margin-right: 20px;
+  }
+  
+  .star {
+    cursor: pointer;
+    color: goldenrod;
+    /* transition: color 0.2s; */
+  }

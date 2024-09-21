@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Box, Grid, Heading, Text, Avatar, VStack, Button, IconButton } from '@chakra-ui/react';
-import {BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
-
-
+import { Box, Grid, GridItem, Heading, Text, Avatar, VStack, Stack, Button, IconButton, Image } from '@chakra-ui/react';
+import { HiArrowLongLeft, HiArrowLongRight } from "react-icons/hi2";
+import StarRatings from '../../comman/startRating/StarRatings';
+import studentImageOne from "../../assets/testimonial-01.png"
+import studentImageTwo from "../../assets/testimonial-02.png"
+import "../../comman/Styles/allStyles.css"
 const Testimonials = () => {
   // Sample testimonials data
   const testimonials = [
@@ -45,36 +47,75 @@ const Testimonials = () => {
   };
 
   return (
-    <Box p={10} bg="gray.100">
-      <Heading mb={5} textAlign="center">What Our Students Have To Say</Heading>
-      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10}>
+    <Box p={10}  className='testiBgImage'>
+      <Text textAlign="center">TESTIMONIALS</Text>
+      <Heading mb={"5rem"} textAlign="center">What Our Students <br /> Have To Say</Heading>
+      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10} width={"80%"} ml={"8rem"}>
         {testimonials.slice(index, index + 2).map((testimonial, idx) => (
           <Box key={idx} bg="white" p={5} borderRadius="md" shadow="md">
             <VStack align="start">
-              <Text>"{testimonial.message}"</Text>
-              <Avatar name={testimonial.avatar} />
-              <Text fontWeight="bold">{testimonial.name}</Text>
-              <Text fontSize="sm">{testimonial.role}</Text>
+              <StarRatings />
+              <Text textAlign={"left"}>"{testimonial.message}"</Text>
+              <Grid
+                h='100px'
+                templateRows='repeat(2, 1fr)'
+                templateColumns='repeat(5, 1fr)'
+                gap={4}
+                mt={5}
+              >
+                {/* <Avatar name={testimonial.avatar} rowSpan={2} colSpan={1} width/> */}
+                <Image
+            src={studentImageOne}
+            alt="student avatar Image"
+            rowSpan={2} colSpan={1} 
+            borderRadius="50%"
+          />
+                <Stack spacing={4} align={"center"} mt={".5rem"}>
+                  <Box width={"100px"} textAlign={"left"}>
+                    <Text fontWeight="bold">{testimonial.name}</Text>
+                  </Box>
+                  <Box width={"100px"} textAlign={"left"}>
+                    <Text fontSize="sm" mt={"-1rem"}>{testimonial.role}</Text>
+                  </Box>
+                </Stack>
+              </Grid>
             </VStack>
           </Box>
-        ))}
-      </Grid>
+        ))
+        }
+      </Grid >
 
       {/* Navigation buttons */}
-      <Box display="flex" justifyContent="center" mt={8}>
-        <IconButton bg={"#30b979"}
+      < Box display="flex" justifyContent="center" mt={8} >
+        <IconButton
+          bg={"white"}
+          boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}
+          borderRadius={"50%"}
+          height={"60px"}
+          width={"60px"}
           aria-label="Previous testimonials"
-          icon={<BsBoxArrowInLeft />}
+          icon={<HiArrowLongLeft  fontSize={"30px"}/>}
           onClick={prevTestimonials}
+          _hover={{
+            backgroundColor: "#30b979"
+          }}
           mr={5}
         />
-        <IconButton bg={"#30b979"}
+        <IconButton
+          bg={"white"}
+          boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}
+          borderRadius={"50%"}
+          height={"60px"}
+          width={"60px"}
           aria-label="Next testimonials"
-          icon={<BsBoxArrowInRight />          }
+          icon={<HiArrowLongRight fontSize={"30px"} />}
           onClick={nextTestimonials}
+          _hover={{
+            backgroundColor: "#30b979"
+          }}
         />
-      </Box>
-    </Box>
+      </Box >
+    </Box >
   );
 };
 

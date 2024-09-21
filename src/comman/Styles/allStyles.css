@@ -355,8 +355,6 @@
   box-shadow: 0px 0px 0px 30px rgb(243, 242, 242);
 }
 
-
-
 /* features styles */
 .featuresShadow {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -371,13 +369,63 @@
 .backgroundImageOnly {
   background-image: url("../../assets/cta-bg-imgae-07.png");
 }
+/* Faq's */
+.faqsBGImage{
+  background-image: url("../../assets//shape-55.png"), url("../../assets/shape-56.png");
+  background-position: 50% 75%, 100% 5%;
+  background-size:100px, 100px;
+  background-repeat: no-repeat;
+}
+/* custom Move */
+.customMoveBg{
+  background-image: url("../../assets/shape-54.png");
+  background-position: 0% 30%;
+  background-size:300px;
+  background-repeat: no-repeat;
+ 
+}
+
+@keyframes scroll{
+  0%{
+    transform: translate(100%);
+  }
+ 100%{
+    transform: translate(-100%);
+  }
+}
+
+/* testi  */
+.testiBgImage{
+  background-image: url("../../assets//shape-52.png"), url("../../assets//shape-098.png"), url("../../assets/shape-53.png");
+  background-position: 0% 30%, 93% 40%, 98% 50%;
+  background-size:150px, 150px,150px;
+  background-repeat: no-repeat;
+}
+/* artical */
+.articalBgImage{
+  background-image: url("../../assets//shape-31.png"), url("../../assets/circle-png.png");
+  background-position: 0% 45%, 10% 55%;
+  background-size:200px, 100px;
+  background-repeat: no-repeat;
+}
+.articalBgAvatar{
+  background-image: url("../../assets//python-icon.png"), url("../../assets//shape-31.png"),
+  url("../../assets/html-icon.png");
+  background-position: 5% 5%, 60% 30%, 75% 0%;
+  background-size:100px, 100px, 100px;
+  background-repeat: no-repeat; 
+}
+.articalBgText{
+  background-image: url("../../assets//shape-098.png"), url("../../assets/code-icon.png");
+  background-position: 110% 155%, 95% 10%;
+  background-size:150px, 100px;
+  background-repeat: no-repeat; 
+}
 
 /* Footer */
 .footer {
   background-image: url("../../assets//BG-3.webp");
-  background-position:
-    1% 1%;
-  background-size:
-    auto;
+  background-position: 1% 1%;
+  background-size:auto;
   background-repeat: no-repeat;
 }
