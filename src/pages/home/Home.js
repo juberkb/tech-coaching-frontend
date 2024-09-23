@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import "../../comman/Styles/allStyles.css"
-import { Box, Grid, GridItem, VStack, Heading, Text, Image, Flex, SimpleGrid, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
+import { Box, Grid, GridItem, VStack, Heading, Text, Image, Flex, SimpleGrid,  } from '@chakra-ui/react';
 import Button from '../../components/button/Button';
 import Testimonials from '../testis/Testimonials';
 import CustomMove from '../customMover/CustomMove';
@@ -22,7 +22,6 @@ import { FaLaptopCode, FaUserGraduate, FaRegComments, FaRegCheckSquare } from "r
 
 import StarRatings from '../../comman/startRating/StarRatings';
 import FaqSection from '../Faq\'s/FaqSection';
-import { base } from 'framer-motion/client';
 
 
 
@@ -221,7 +220,7 @@ export default function HomePage() {
         py={{ base: 8, md: 12 }} // Smaller padding for small screens, larger for medium and up
         px={{ base: 4, md: 8 }}  // Smaller padding for small screens
       >
-        <Text color="red" mt={{ base: "4rem", md: "9rem" }} fontSize={{ base: "1.25rem", md: "1.5rem" }} align="center">
+        <Text color="red" mt={{ base: "4rem", md: "-21rem" }} fontSize={{ base: "1.25rem", md: "1.5rem" }} align="center">
           FEATURES
         </Text>
 

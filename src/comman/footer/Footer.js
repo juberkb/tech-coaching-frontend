@@ -1,9 +1,8 @@
 import React from 'react';
 import "../Styles/allStyles.css"
-import { Box, VStack, HStack, SimpleGrid, GridItem, Text, Input, IconButton, Link, Icon, Flex } from '@chakra-ui/react';
+import { Box, VStack, HStack, SimpleGrid, GridItem, Text, Input, Link, Icon, Flex } from '@chakra-ui/react';
 import { FaFacebook, FaLinkedin, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import Button from '../../components/button/Button';
-import { ClassNames } from '@emotion/react';
 const Footer = () => {
   const handleClick = () => {
     alert('Button clicked!');
