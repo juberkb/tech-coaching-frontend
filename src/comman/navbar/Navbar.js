@@ -82,7 +82,7 @@ const Navbar = () => {
             mr={{ base: 0, md: '8rem' }}
             display={{ base: 'none', md: 'flex' }}
             ml="auto"
-            style={{ fontWeight: "500", fontSize: "1.2em" }}
+            style={{ fontWeight: "500", fontSize: "24pxm" }}
           >
             <Menu>
               <MenuButton
