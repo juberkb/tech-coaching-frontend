@@ -22,9 +22,10 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import webLogo from "../../assets/logo-dark.png";
-import { FaBars, FaChevronDown,FaChevronRight } from 'react-icons/fa';
+import { FaBars, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { MdClose } from "react-icons/md";
@@ -35,7 +36,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 50) {  // Adjust the scroll threshold as needed
+    if (window.scrollY > 50) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
@@ -48,12 +49,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Control visibility based on screen size
+  const showCartIcon = useBreakpointValue({ base: false, md: true });
+  const showTryForFreeButton = useBreakpointValue({ base: false, md: true });
+  const showSearchBeforeHamburger = useBreakpointValue({ base: true, md: false });
+
   return (
     <Box>
       {/* Navbar */}
-   
       <Box
-      className='animate__animated animate__backInDown'
+        className='animate_animated animate_backInDown'
         position="fixed"
         top={0}
         left={0}
@@ -72,14 +77,14 @@ const Navbar = () => {
         >
           {/* Logo */}
           <Box>
-            <Image src={webLogo} alt="EduBlink" width="100%" />
+            <Image src={webLogo} alt="EduBlink" width={{base:"70%", md:"100%"}} />
           </Box>
 
           {/* Menu Links */}
           <HStack
             as="nav"
             spacing={10}
-            mr={{ base: 0, md: '16rem' }}
+            mr={{ base: 0, md: '8rem' }}
             display={{ base: 'none', md: 'flex' }}
             ml="auto"
             style={{ fontWeight: "500", fontSize: "1.2em" }}
@@ -221,27 +226,33 @@ const Navbar = () => {
           </HStack>
 
           {/* Search and Cart Icons */}
-          <HStack spacing={8} display={{ base: 'none', md: 'flex' }}
-            mr={{ base: 0, md: '5rem' }}>
+          <HStack spacing={{ base: 2, md:8 }} display={{ base: 'none', md: 'flex' }} mr={{ base: 0, md: '5rem' }}>
+            {showCartIcon && (
+              <IconButton
+                aria-label="Shopping Cart"
+                icon={<MdOutlineShoppingCart />}
+                variant="ghost"
+                fontSize={"2em"}
+              />
+            )}
+          </HStack>
+
+          {showSearchBeforeHamburger && (
             <IconButton
               aria-label="Search"
               icon={<CiSearch />}
               variant="ghost"
-              fontWeight={"bold"}
-              fontSize={"2em"}
+              fontSize={{base:"1.5rem", md:"2em"}}
             />
-            <IconButton
-              aria-label="Shopping Cart"
-              icon={<MdOutlineShoppingCart />}
-              variant="ghost"
-              fontSize={"2em"}
+          )}
+
+          {showTryForFreeButton && (
+            <Button
+              label="Try For Free"
+              onClick={() => alert('Button clicked!')}
+              icon={<TfiArrowRight />}
             />
-          </HStack>
-          <Button
-            label="Try For Free"
-            onClick={() => alert('Button clicked!')}
-            icon={<TfiArrowRight />}
-          />
+          )}
 
           {/* Menu Button for mobile */}
           <IconButton
@@ -253,21 +264,49 @@ const Navbar = () => {
           />
 
           {/* Mobile Drawer */}
-          <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerBody>
-                <Stack as="nav" spacing={4}>
-                  <Link href="#">Home</Link>
-                  <Link href="#">Pages</Link>
-                  <Link href="#">Courses</Link>
-                  <Link href="#">Blog</Link>
-                  <Link href="#">Contact</Link>
-                </Stack>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
+        {/* Mobile Drawer */}
+<Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+  <DrawerOverlay />
+  <DrawerContent mt={"2rem"}>
+    <DrawerCloseButton />
+    <DrawerBody>
+      <Stack as="nav" spacing={4}>
+        <Menu>
+          <MenuButton as={Link} href="#">
+            Home
+          </MenuButton>
+          <MenuList>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>EduBlink Education</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Distant Learning</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>University</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Online Academy</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Modern Schooling</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Kitchen Coach</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Remote Training</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Business Coach</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Motivation</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Programming</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Online Art</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Sales Coach</MenuItem>
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuButton as={Link} href="#">
+            Courses
+          </MenuButton>
+          <MenuList>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Course Style</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Course Detail</MenuItem>
+            <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Course Filter</MenuItem>
+          </MenuList>
+        </Menu>
+        <Link href="#">Blog</Link>
+        <Link href="#">Contact</Link>
+      </Stack>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+
         </Flex>
       </Box>
     </Box>
