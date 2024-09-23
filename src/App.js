@@ -20,8 +20,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 // import TermsService from './components/TermsService.js';
 
 function App() {
-  // const data = [
-  //   { name: 'Home', link: '/' },
+  const data = [
+    { name: 'Home', link: '/' },
   //   { name: 'Services', link: '/services' },
   //   { name: 'About Us', link: '/about' },
   //   { name: 'Contact', link: '/contact' },
@@ -33,15 +33,14 @@ function App() {
   //   // Footer links
   //   { name: 'Our Services', link: '/web-development' },
   //   { name: 'Testimonial', link: '/testimonials' },
-  // ];
+  ];
 
   return (
 
   <ChakraProvider>
       <header className="App-header">
         <Router>
-          {/* <Navbar data={data} /> */}
-          <Navbar/>
+          <Navbar data={data} />
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/about" element={<About />} />
@@ -53,7 +52,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsService />} /> */}
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </header>
       </ChakraProvider>

@@ -10,7 +10,8 @@ const Footer = () => {
   };
 
   return (
-    <Box bg="#F0F4F5" p={"6rem"} >
+    <Box bg="#F0F4F5" 
+    padding={{ base: '6rem', md: '1rem' }} >
       <SimpleGrid columns={[1, 1, 2, 4]} spacing={8} maxW="1200px" mx="auto" px={4} className="footer">
         {/* EduBlink Info (Logo, Address, Contact Info) */}
         <GridItem>
@@ -59,12 +60,26 @@ const Footer = () => {
 
         {/* Contact Section with Email Form */}
         <GridItem colSpan={[1, 1, 1, 1]}>
-          <VStack align="flex-start">
+          <VStack align="flex-start" spacing={4} w="100%">
+            {/* Heading and Text */}
             <Text fontSize="lg" fontWeight="bold">Contacts</Text>
             <Text fontSize="sm">Enter your email address to register for our newsletter subscription</Text>
-            <HStack mt={4} direction={['column', 'row']} spacing={4}>
-              <Input placeholder="Enter your email" />
-              <Button label="Subscribe" onClick={handleClick} mt={"1rem"} />
+
+            {/* Input and Button Section */}
+            <HStack
+              mt={4}
+              spacing={4}
+              w="100%"
+              direction={{ base: 'column', md: 'row' }} // Column on small screens, row on medium and large screens
+              align="flex-start" // Left-align on small screens
+            >
+              {/* Input */}
+              <Input placeholder="Enter your email" w="100%" />
+
+              {/* Button */}
+              <Button onClick={handleClick} w={{ base: '100%', md: 'auto' }} mt={{ base: '1rem', md: '0' }}>
+                Subscribe
+              </Button>
             </HStack>
 
             {/* Social Media Icons */}
