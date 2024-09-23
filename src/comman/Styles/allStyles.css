@@ -72,7 +72,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px 30px 5px 10px;
-  margin-left: 4rem;
+  margin-left: 17.5rem;
   font-size: 0.9rem;
   display: none;
   width: 150px;
@@ -189,7 +189,7 @@
     align-items: flex-start;
     text-align: start;
     order: 1;
-    margin-left: -24rem;
+    margin-left: -20rem;
   }
 
   .logo {
@@ -202,7 +202,7 @@
   .nav-links {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     position: fixed;
     top: 0;
     right: 0;
@@ -236,6 +236,7 @@
 }
 
 .search-results {
+  border: 1px solid #30b979;
   background: #fff;
   position: absolute;
   top: 60px;
@@ -243,7 +244,6 @@
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  border-radius: 0 0 5px 5px;
 }
 
 .search-result-item {
