@@ -75,7 +75,7 @@ export default function HomePage() {
   };
 
   return (
-    <Box>
+    <Box  w="100%" overflowX="hidden">
       <Flex className='movingShape'
         mt={{ base: "5rem", md: "-5rem" }}
         direction={['column', 'row']} align="center"
@@ -139,8 +139,8 @@ export default function HomePage() {
           justify="space-around"
           align="center"
           pt={10}
-          mt={{ base: "-40rem", md: "-10rem" }}
-          ml={{base:"1rem", md:0}}
+          mt={{ base: "-40rem", md: "-36rem" }}
+          ml={{base:"2rem", md:0}}
 
         >
           {/* First Box: Online Courses */}
@@ -160,6 +160,7 @@ export default function HomePage() {
               justifyContent="center"
               alignItems="center"
               mr={4}
+               boxShadow="0px 5px 15px rgba(0, 0, 0, 0.35)"
             >
               {/* Icon */}
               <FaLaptopCode size="40px" color="#6b46c1" />
@@ -190,6 +191,7 @@ export default function HomePage() {
               justifyContent="center"
               alignItems="center"
               mr={4}
+               boxShadow="0px 5px 15px rgba(0, 0, 0, 0.35)"
             >
               {/* Icon */}
               <FaUserGraduate size="40px" color="#e53e3e" />
@@ -465,68 +467,6 @@ export default function HomePage() {
         </Button>
       </VStack>
 
-      {/* FAQ Section */}
-      {/* <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10} p={10} className='faqsBGImage'>
-        <Box p={10} ml={"3rem"}>
-          <Text>FAQ&apos;s</Text>
-          <Heading mb={5} fontWeight={"600"}>Learn Your Best Education<br /> Culture with Edublink</Heading>
-          <Text mb={10}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna.
-          </Text>
-          <Text color={"#30b979"} bg={"#F0F4F5"} width={"165px"} p={4} borderRadius={"10px"}>General Questions</Text><br />
-          <Text ml={"1rem"}>Community</Text><br />
-          <Text ml={"1rem"}>Support</Text>
-        </Box>
-        <Box p={10} mr={"3rem"}>
-          <Accordion allowToggle>
-            <AccordionItem border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How can I contact a school directly?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How do I find a school where I want to study?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>Where should I study abroad?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How to find your misiing course?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How Long Do I get Support and updates ?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-      </Grid> */}
       <FaqSection />
 
       <CustomMove />
@@ -732,5 +672,7 @@ export default function HomePage() {
         </Grid>
       </Box>
     </Box>
+ 
+
   );
 }

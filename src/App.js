@@ -37,8 +37,8 @@ function App() {
 
   return (
 
-  <ChakraProvider>
-      <header className="App-header">
+  <ChakraProvider >
+      <header className="App-header" >
         <Router>
           <Navbar data={data} />
           <Routes>
