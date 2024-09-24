@@ -1,0 +1,176 @@
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-weight: 500;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align icons to the end */
+    flex: 0 0 auto;
+}
+
+.logo {
+    flex: 0 0 auto;
+}
+
+.nav-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.nav-links .dropdown {
+    margin-left: 20px;
+    /* Space between each link */
+}
+
+.nav-links .dropdown a {
+    display: flex;
+    align-items: center;
+    /* Aligns link text and caret icon in a row */
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+
+}
+
+.nav-links .dropdown a:hover {
+    color: #30b979;
+}
+
+.nav-links .dropdown a span {
+    display: flex;
+    align-items: center;
+}
+
+/* .search-icon,
+  .chat-icon,
+  .try-button {
+    font-size: 1.2rem;
+    color: #007bff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px; 
+  } */
+
+/* Container that holds the link and dropdown menu */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Positions dropdown just below the link */
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.multi-column {
+    margin-top: 1.5rem;
+    display: flex;
+    width: auto; 
+    justify-content: space-between;
+}
+
+.column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.column ul li {
+    margin-bottom: 10px;
+}
+
+.column ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.column ul li a:hover {
+    color: #30b979;
+}
+
+/* When hovering over the dropdown container, show the menu */
+.dropdown:hover .dropdown-menu {
+    display: block; /* Display the dropdown when hovering */
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu-button span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #007bff;
+        margin: 5px 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background-color: #fff;
+        width: 200px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links.show {
+        transform: translateX(0);
+    }
+
+    .search-container {
+        position: absolute;
+        right: 50px;
+        top: 15px;
+    }
+
+    .logo {
+        position: absolute;
+        left: 20px;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+    }
+}

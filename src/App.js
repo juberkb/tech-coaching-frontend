@@ -5,7 +5,10 @@ import Navbar from "./comman/navbar/Navbar.js"
 import Footer from "./comman/footer/Footer.js"
 import Home from "./pages/home/Home.js"
 import { ChakraProvider } from '@chakra-ui/react';
-
+import AboutPage from './pages/about/About.js';
+import Courses from "./pages/coursePage/Courses.js"
+import BlogPage from './pages/blog/Blog.js';
+import ContactUs from './pages/contact/Contact.js';
 // import Home from './HeroSections/Home.js';
 // import Navbar from './HeroSections/Navbar.js';
 // import Footer from './HeroSections/Footer.js';
@@ -22,8 +25,13 @@ import { ChakraProvider } from '@chakra-ui/react';
 function App() {
   const data = [
     { name: 'Home', link: '/' },
+        { name: 'About Us', link: '/aboutUs' },
+        { name: 'Courses', link: '/courses' },
+        { name: 'Blog page', link: '/blogs' },
+        { name: 'Contact Us', link: '/contactUs' },
+
   //   { name: 'Services', link: '/services' },
-  //   { name: 'About Us', link: '/about' },
+
   //   { name: 'Contact', link: '/contact' },
   //   { name: 'Testimonials', link: '/testimonials' },
   //   { name: 'News', link: '/news' },
@@ -43,8 +51,11 @@ function App() {
           <Navbar data={data} />
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Service />} />
+            <Route path="/abouUs" element={<AboutPage />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/blogs" element={<BlogPage />} />
+            <Route path="/contactUs" element={<ContactUs />} />
+            {/* <Route path="/services" element={<Service />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/news" element={<News />} />

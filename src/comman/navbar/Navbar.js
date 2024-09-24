@@ -1,278 +1,170 @@
 import React, { useState } from 'react';
-import homeNavImage from "../../assets/mega-menu-image.webp";
-import Button from '../../components/button/Button';
+import { Link } from 'react-router-dom';
 import 'animate.css';
-import {
-  Box,
-  SimpleGrid,
-  Flex,
-  HStack,
-  IconButton,
-  Image,
-  Link,
-  Stack,
-  useDisclosure,
-  useColorModeValue,
-  Drawer,
-  DrawerContent,
-  DrawerOverlay,
-  DrawerCloseButton,
-  DrawerBody,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-} from '@chakra-ui/react';
-import webLogo from "../../assets/logo-dark.png";
-import { FaBars, FaChevronDown,FaChevronRight } from 'react-icons/fa';
-import { MdOutlineShoppingCart } from "react-icons/md";
+import navImage from "../../assets/mega-menu-image.webp"
+import "../navbar/navbar.css";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { FiArrowRight } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
-import { MdClose } from "react-icons/md";
-import { TfiArrowRight } from "react-icons/tfi";
+import { PiShoppingCartThin } from "react-icons/pi";
+import webLogo from "../../assets/logo-dark.png";
+import Button from '../../components/button/Button';
 
-const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = ({ data }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState({
+    home: false,
+    services: false,
+    about: false,
+    contact: false
+  });
 
-  const handleScroll = () => {
-    if (window.scrollY > 50) {  // Adjust the scroll threshold as needed
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  // Scroll event listener
-  React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    const query = e.target.value.toLowerCase();
+    const filtered = data.filter(item => item.name.toLowerCase().includes(query));
+    setFilteredData(filtered);
+  };
+
+  const toggleDropdown = (menu) => {
+    setIsDropdownOpen(prevState => ({
+      ...prevState,
+      [menu]: !prevState[menu]
+    }));
+  };
 
   return (
-    <Box>
-      {/* Navbar */}
-   
-      <Box
-      className='animate__animated animate__backInDown'
-        position="fixed"
-        top={0}
-        left={0}
-        width="100%"
-        zIndex="1000"
-        bg={useColorModeValue('white', 'gray.800')}
-        boxShadow={isScrolled ? 'md' : 'none'}
-        transition="transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
-        transform={isScrolled ? 'translateY(0)' : 'translateY(-10%)'} // Sliding effect
-      >
-        <Flex
-          h={16}
-          alignItems="center"
-          justifyContent="space-between"
-          p={{ base: 4, md: 12 }}
-        >
-          {/* Logo */}
-          <Box>
-            <Image src={webLogo} alt="EduBlink" width="100%" />
-          </Box>
+    <header className="navbar ">
+      <div className="navbar-container">
+        <div className="logo">
+          <img src={webLogo} alt="EduBlink" width="100%" />
+        </div>
 
-          {/* Menu Links */}
-          <HStack
-            as="nav"
-            spacing={10}
-            mr={{ base: 0, md: '8rem' }}
-            display={{ base: 'none', md: 'flex' }}
-            ml="auto"
-            style={{ fontWeight: "500", fontSize: "24pxm" }}
-          >
-            <Menu>
-              <MenuButton
-                as={Link}
-                href="#"
-                _hover={{ color: '#30b979' }}
-                style={{ textDecoration: 'none' }}
-              >
-                <Flex alignItems="center">
-                  Home <FaChevronDown style={{ marginLeft: '5px' }} />
-                </Flex>
-              </MenuButton>
-              <MenuList maxW={"50%"} ml={{ md: "6rem" }} mt={{ md: "1rem" }}>
-                <SimpleGrid columns={3} spacing={10} p={"5rem"}>
-                  {/* Column 1 */}
-                  <Box>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>EduBlink Education</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Distant Learning</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>University</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Online Academy</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Modern Schooling</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Kitchen Coach</MenuItem>
-                  </Box>
+        {/* Navigation Links */}
+        <nav className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+          <div className="dropdown">
+            <Link to="/" onClick={() => toggleDropdown('home')}>
+              <span>Home <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
+            </Link>
+            {isDropdownOpen.home && (
+              <div className="dropdown-menu multi-column"  >
+                <div className="column">
+                  <ul>
+                    <li><Link to="/edublink-education">EduBlink Education</Link></li>
+                    <li><Link to="/distant-learning">Distant Learning</Link></li>
+                    <li><Link to="/university">University</Link></li>
+                    <li><Link to="/online-academy">Online Academy</Link></li>
+                  </ul>
+                </div>
+                <div className="column">
+                  <ul>
+                    <li><Link to="/remote-training">Remote Training</Link></li>
+                    <li><Link to="/business-coach">Business Coach</Link></li>
+                    <li><Link to="/motivation">Motivation</Link></li>
+                    <li><Link to="/programming">Programming</Link></li>
+                  </ul>
+                </div>
+                <div className="column">
+                  <img src={navImage} alt='navbar  image' />
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="dropdown">
+            <Link to="/" onClick={() => toggleDropdown('home')}>
+              <span>Pages <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
+            </Link>
+            {isDropdownOpen.home && (
+              <div className="dropdown-menu multi-column">
+                <div className="column">
+                  <ul>
+                    <li><Link to="/abouUs">About Us</Link></li>
+                    <li><Link to="/distant-learning">Instructors</Link></li>
+                    <li><Link to="/university">Event Pages</Link></li>
+                    <li><Link to="/online-academy">Shop pages</Link></li>
+                    <li><Link to="/online-academy">Comming Soon</Link></li>
 
-                  {/* Column 2 */}
-                  <Box>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Remote Training</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Business Coach</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Motivation</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Programming</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Online Art</MenuItem>
-                   <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Sales Coach</MenuItem>
-                  </Box>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="dropdown">
+            <Link to="/courses" onClick={() => toggleDropdown('home')}>
+              <span>Courses</span>
+            </Link>
+              </div>
+      
+              <div className="dropdown">
+            <Link to="/blogs" onClick={() => toggleDropdown('home')}>
+              <span>Blogs </span>
+            </Link>
+              </div>
 
-                  {/* Column 3 - Image */}
-                  <Box>
-                    <Image
-                      src={homeNavImage}
-                      alt="Dropdown Image"
-                      borderRadius="md"
-                      boxShadow="md"
-                    />
-                  </Box>
-                </SimpleGrid>
-              </MenuList>
-            </Menu>
+              <div className="dropdown">
+            <Link to="/contactUs" onClick={() => toggleDropdown('home')}>
+              <span>Contact <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
+            </Link>
+            {isDropdownOpen.home && (
+              <div className="dropdown-menu multi-column">
+                <div className="column">
+                  <ul>
+                    <li><Link to="/edublink-education">Contact Us</Link></li>
+                    <li><Link to="/distant-learning">Contact Ne</Link></li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+        </nav>
 
-            <Menu>
-              <MenuButton
-                as={Link}
-                href="#"
-                _hover={{ color: '#30b979' }}
-                style={{ textDecoration: 'none' }}
-              >
-                <Flex alignItems="center">
-                  Pages <FaChevronDown style={{ marginLeft: '5px' }} />
-                </Flex>
-              </MenuButton>
-              <MenuList>
-              <Menu>
-      <MenuButton fontWeight={"500"} _hover={{ color: '#30b979' }} >
-      <HStack ml={"1rem"}>
-      <span>About Us</span><FaChevronRight  style={{ marginLeft: '5px' }}/>
-      </HStack>
-      </MenuButton>
-      <MenuList ml={"13.7rem"} mt={"-2rem"}>
-        <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Style 1</MenuItem>
-        <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Style 2</MenuItem>
-        <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Style 3</MenuItem>
-      </MenuList>
-    </Menu>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Instructor</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Event Page</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Shop Pages</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Zoom Meetings</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>FAQ's</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Pricing Table</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Privacy Policy</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Coming Soon</MenuItem>
-               <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>404 Page</MenuItem>
-              </MenuList>
-            </Menu>
-            <Menu>
-              <MenuButton
-                as={Link}
-                href="#"
-                _hover={{ color: '#30b979' }}
-                style={{ textDecoration: 'none' }}
-              >
-                <Flex alignItems="center">
-                  Courses <FaChevronDown style={{ marginLeft: '5px' }} />
-                </Flex>
-              </MenuButton>
-              <MenuList>
-                <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Course Style</MenuItem>
-                <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Course Detail</MenuItem>
-                <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Course Filter</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton
-                as={Link}
-                href="#"
-                _hover={{ color: '#30b979' }}
-                style={{ textDecoration: 'none' }}
-              >
-                <Flex alignItems="center">
-                  Blog <FaChevronDown style={{ marginLeft: '5px' }} />
-                </Flex>
-              </MenuButton>
-              <MenuList textDecoration={"none"}  >
-                <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Blog Style 1</MenuItem>
-                <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Blog Style 2</MenuItem>
-                <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Blog Standared</MenuItem>
-                <MenuItem fontWeight={"500"} _hover={{ color: '#30b979' }}>Blog Details</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton
-                as={Link}
-                href="#"
-                _hover={{ color: '#30b979' }}
-                style={{ textDecoration: 'none' }}
-              >
-                <Flex alignItems="center">
-                  Contact <FaChevronDown style={{ marginLeft: '5px' }} />
-                </Flex>
-              </MenuButton>
-              <MenuList>
-                <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Contact Us</MenuItem>
-                <MenuItem fontWeight={"500"}  _hover={{ color: '#30b979' }}>Contact Me</MenuItem>
-              </MenuList>
-            </Menu>
-          </HStack>
-
-          {/* Search and Cart Icons */}
-          <HStack spacing={6} display={{ base: 'none', md: 'flex' }}
-            mr={{ base: 0, md: '5rem' }}>
-            <IconButton
-              aria-label="Search"
-              icon={<CiSearch />}
-              variant="ghost"
-              fontWeight={"bold"}
-              fontSize={"2em"}
-            />
-            <IconButton
-              aria-label="Shopping Cart"
-              icon={<MdOutlineShoppingCart />}
-              variant="ghost"
-              fontSize={"2em"}
-              mr={"2rem"}
-            />
-          </HStack>
+        {/* Search & Cart */}
+        <div className="search-container">
+          <button className="search-icon" onClick={toggleSearch} style={{ marginRight: "2rem" }}>
+            <CiSearch color='black' fontSize="1.8rem " />
+          </button>
+          <button className="chat-icon" style={{ marginRight: "3rem" }}>
+            <PiShoppingCartThin color='black' fontSize="1.8rem" />
+          </button>
           <Button
-            label="Try For Free"
-            onClick={() => alert('Button clicked!')}
-            icon={<TfiArrowRight />}
-           
+            label="Find Courses"
+            fontWeight="normal"
+            icon={<FiArrowRight />}
           />
-
-          {/* Menu Button for mobile */}
-          <IconButton
-            size="md"
-            icon={isOpen ? <MdClose /> : <FaBars />}
-            aria-label="Open Menu"
-            display={{ md: 'none' }}
-            onClick={onOpen}
-          />
-
-          {/* Mobile Drawer */}
-          <Drawer isOpen={isOpen} placement="left" onClose={onClose}  >
-            <DrawerOverlay />
-            <DrawerContent mt={"2rem"}>
-              <DrawerCloseButton />
-              <DrawerBody>
-                <Stack as="nav" spacing={4}>
-                  <Link href="#">Home</Link>
-                  <Link href="#">Pages</Link>
-                  <Link href="#">Courses</Link>
-                  <Link href="#">Blog</Link>
-                  <Link href="#">Contact</Link>
-                </Stack>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </Flex>
-      </Box>
-    </Box>
+        </div>
+      </div>
+      <button className={`menu-button ${isMenuOpen ? 'open' : ''}`}
+            onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      {/* Search Results */}
+      {isSearchOpen && searchQuery && (
+        <div className="search-results">
+          {filteredData.length > 0 ? (
+            filteredData.map((item, index) => (
+              <Link key={index} to={item.link} className="search-result-item" onClick={() => setIsSearchOpen(false)}>
+                {item.name}
+              </Link>
+            ))
+          ) : (
+            <p className="no-results">No results found</p>
+          )}
+        </div>
+      )}
+    </header>
   );
 };
 

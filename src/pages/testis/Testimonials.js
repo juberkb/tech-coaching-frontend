@@ -58,8 +58,8 @@ const Testimonials = () => {
       p={10}
       className="testiBgImage"
       bg={{
-        base: "white",  // No background image for small screens
-        md: "transparent" // Background image will be visible on medium and larger screens
+        base: "white", 
+        md: "transparent" 
       }}
     >
       <Text textAlign="center" fontSize={"1rem"} fontWeight={"700"} color={"gray"}>TESTIMONIALS</Text>
@@ -67,7 +67,6 @@ const Testimonials = () => {
         What Our Students <br /> Have To Say
       </Heading>
 
-      {/* Display 1 card for small devices and 2 cards for large devices */}
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10} maxWidth={"80%"} margin="0 auto">
         {testimonials.slice(index, index + (window.innerWidth >= 768 ? 2 : 1)).map((testimonial, idx) => (
           <Box key={idx} bg="white" p={5} borderRadius="md" shadow="md">
