@@ -57,7 +57,6 @@ body{
   transition: background-position 0.1s ease-in-out; 
 }
 
-/* Media query to hide background images on small screens */
 @media (max-width: 768px) {
   .movingShape,
   .homeBackground-container-image {
@@ -230,5 +229,42 @@ body{
 }
 .aboutPageCounter{
   box-shadow: rgba(32, 32, 85, 0.2) 0px 7px 29px 0px;
+}
+.aboutPageFeatures{
+  filter: grayscale(60%);
+    transition: filter 0.3s ease;
+}
+
+.aboutPageFeatures:hover {
+    filter: grayscale(0%);
+}
+.CommonBgImage {
+  position: relative;
+  background-image:
+    url("../../assets/shape-13.png"),
+    url("../../assets/horizonatlShape1.png"),
+    url("../../assets/shape-15.png");
+
+  background-position:
+    10% 100%, 
+    100% 0%,
+    93% 40%;  
+
+  background-size:
+    200px,
+    50px,
+    100px;
+
+  background-repeat: no-repeat;
+  background-color: #F4F5FA;
+  width: 100%;
+  height: 100%;
+  transition: background-position 0.1s ease-in-out; 
+}
+
+@media (max-width: 768px) {
+  .CommonBgImage {
+    background-image: none;
+  }
 }
 /* About Page Styling End */

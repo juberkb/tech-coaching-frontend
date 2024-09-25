@@ -2,7 +2,10 @@ import { React, useState } from 'react';
 
 import "../../comman/Styles/allStyles.css"
 import { Box, Grid, GridItem, VStack, Heading, Text, Image, Flex, SimpleGrid,  } from '@chakra-ui/react';
+
 import Button from '../../components/button/Button';
+import { FiArrowRight } from 'react-icons/fi';
+
 import Testimonials from '../testis/Testimonials';
 import CustomMove from '../customMover/CustomMove';
 import topHomeImage from "../../assets/programming-banner.webp"
@@ -16,7 +19,6 @@ import courseImageRight from "../../assets/course-img-3.jpg"
 import studentImageBottomOne from "../../assets/course-40-590x430.jpg"
 import bgCurveBorder from "../../assets/programming-bg.svg"
 import { HiCheck } from "react-icons/hi";
-import { FiArrowRight } from 'react-icons/fi';
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { FaLaptopCode, FaUserGraduate, FaRegComments, FaRegCheckSquare } from "react-icons/fa";
@@ -35,11 +37,6 @@ export default function HomePage() {
   const [bgPosition, setBgPosition] = useState({
     mainBg: '32% 25%, 100% 65%, 90% 50%, 90% 25%, 40% 65%, 40% 100%, 92% 39%',
   });
-
-  const [aboutBgPosition, setAboutBgPosition] = useState({
-    aboutBg: '10% 1%, 1% 40%, 100% 100%',
-  });
-
   const handleMouseMove = (e) => {
     const { clientX, clientY, currentTarget } = e;
     const { width, height, left, top } = currentTarget.getBoundingClientRect();
@@ -58,6 +55,10 @@ export default function HomePage() {
 
     setBgPosition({ mainBg: newPosition });
   };
+
+  const [aboutBgPosition, setAboutBgPosition] = useState({
+    aboutBg: '10% 1%, 1% 40%, 100% 100%',
+  });
 
   const handleMouseMoveAbout = (e) => {
     const { clientX, clientY, currentTarget } = e;

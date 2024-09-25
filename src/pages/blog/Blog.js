@@ -1,21 +1,16 @@
-import React from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Flex,
-  Grid,
-  Stack,
-  Input,
-  IconButton,
-  Image,
-  SimpleGrid,
-  Divider,
-  Button,
-  Tag,
-  VStack,
-  HStack,
+import React,{useState} from "react";
+
+import {Box,Heading, Text, Flex, Input, IconButton, Image, SimpleGrid, Tag, VStack, HStack,
+  Card, CardHeader, CardBody, CardFooter
 } from "@chakra-ui/react";
+
+import blogImageOne from "../../assets/course-img-1.jpg"
+import blogImageTwo from "../../assets/course-img-2.jpg"
+import blogImageThree from "../../assets/course-img-3.jpg"
+import blogImageFour from "../../assets/blogImageCard.png"
+import Button from '../../components/button/Button';
+
+import { FiArrowRight } from 'react-icons/fi';
 import { FaSearch } from "react-icons/fa";
 
 const blogPosts = [
@@ -24,42 +19,42 @@ const blogPosts = [
     category: "Science",
     date: "15 Nov, 2023",
     comments: 0,
-    img: "/path-to-image-1.jpg",
+    img: blogImageOne,
   },
   {
     title: "Exploring Learning Landscapes in Academic",
     category: "Technology",
     date: "14 Nov, 2023",
     comments: 3,
-    img: "/path-to-image-2.jpg",
+    img: blogImageOne,
   },
   {
     title: "Voices from the Learning Education Hub",
     category: "Learning",
     date: "13 Nov, 2023",
     comments: 0,
-    img: "/path-to-image-3.jpg",
+    img: blogImageOne,
   },
   {
     title: "Shaping Future Generations with Pedagogy Perspectives",
     category: "Child Development",
     date: "11 Nov, 2023",
     comments: 0,
-    img: "/path-to-image-4.jpg",
+    img: blogImageOne,
   },
   {
     title: "Stories from the Educational Front at Classroom",
     category: "Science",
     date: "10 Nov, 2023",
     comments: 0,
-    img: "/path-to-image-5.jpg",
+    img: blogImageOne,
   },
   {
     title: "Fostering Student Growth through Mindful Mentoring",
     category: "Computer Engineering",
     date: "09 Nov, 2023",
     comments: 0,
-    img: "/path-to-image-6.jpg",
+    img: blogImageOne,
   },
 ];
 
@@ -85,38 +80,59 @@ const tags = [
 ];
 
 const BlogPage = () => {
+  const handleClick = () => {
+    alert('Button clicked!');
+  };
+  const [bgPosition, setBgPosition] = useState({
+    mainBg: '10% 100%, 100% 0%, 93% 40%',
+  });
+  const handleMouseMoveCommon = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { width, height, left, top } = currentTarget.getBoundingClientRect();
+    const xPos = (clientX - left) / width;
+    const yPos = (clientY - top) / height;
+
+    const newPosition = `
+      ${10 - xPos * 5}% ${100 + yPos * 10}%,
+      ${100 + xPos * 5}% ${0 + yPos * 10}%,
+      ${93 - xPos * 3}% ${40 + yPos * 5}%
+    `;
+
+    setBgPosition({ mainBg: newPosition });
+  };
   return (
-    <Box px={{ base: 4, md: 10 }} py={8} mt={"6rem"}>
+    <Box mt={"6rem"} >
       {/* Blog Heading */}
-      <Box textAlign="center" mb={10}>
-        <Heading as="h1" fontSize="3xl">
+      <Box textAlign="center" mb={10} className="CommonBgImage" py={"6rem"}  style={{ backgroundPosition: bgPosition.mainBg }} onMouseMove={handleMouseMoveCommon}>
+        <Heading as="h1" fontSize="3.5rem" >
           Blog
         </Heading>
-        <Text mt={2}>Home &gt; Blog</Text>
+        <Text mt={4}>Home &gt; Blog</Text>
       </Box>
 
       {/* Blog Content */}
-      <Flex direction={{ base: "column", lg: "row" }} justify="space-between">
+      <Flex direction={{ base: "column", lg: "row" }} justify="space-between" p={"6rem"}>
         {/* Blog Posts Section */}
         <Box flex={3} mr={{ lg: 10 }}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
             {blogPosts.map((post, index) => (
               <Box
                 key={index}
-                borderWidth="1px"
+                boxShadow="lg"
                 borderRadius="md"
                 overflow="hidden"
                 p={4}
               >
                 <Image src={post.img} alt={post.title} />
-                <Text color="gray.500" fontSize="sm" mt={2}>
-                  {post.category} • {post.date}
+                <Text mt={2} fontSize="sm" color="gray.500">
+                  {`Com ${post.comments}`}
                 </Text>
+
                 <Heading as="h3" fontSize="xl" mt={2}>
                   {post.title}
                 </Heading>
-                <Text mt={2} fontSize="sm" color="gray.500">
-                  {`Com ${post.comments}`}
+                <Text color="gray.500" fontSize="sm" mt={2}>
+                  {post.category} • {post.date}
                 </Text>
                 <Text mt={2} color="gray.600" fontSize="sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -126,26 +142,38 @@ const BlogPage = () => {
           </SimpleGrid>
 
           {/* Pagination */}
-          <Flex mt={10} justify="center">
-            <Button variant="outline" mx={2}>
-              1
-            </Button>
-            <Button variant="outline" mx={2}>
-              2
-            </Button>
-            <Button variant="outline" mx={2}>
-              3
-            </Button>
-            <Button variant="outline" mx={2}>
-              4
-            </Button>
+          <Flex mt={10} justify="center" gap={4} borderRadius={"50%"}>
+            <Button
+              onClick={handleClick}
+              variant="outline" mx={2} boxShadow="lg" borderRadius="50%"
+              label="1"
+            />
+            <Button
+              onClick={handleClick}
+              variant="outline" mx={2} boxShadow="lg"
+              label="2"
+            />
+            <Button
+              onClick={handleClick}
+              variant="outline" mx={2} boxShadow="lg"
+              label="3"
+            />
+            <Button
+              onClick={handleClick}
+              variant="outline" mx={2} boxShadow="lg"
+              label="4" />
+            <Button
+              onClick={handleClick}
+              variant="outline" mx={2} boxShadow="lg"
+              icon={<FiArrowRight />}
+            />
           </Flex>
         </Box>
 
         {/* Sidebar Section */}
-        <Box flex={1} mt={{ base: 10, lg: 0 }}>
+        <Box flex={1} mt={{ base: 10, lg: 0 }} boxShadow="lg" p={10}>
           {/* Search */}
-          <Box mb={10}>
+          <Box mb={10} >
             <Heading as="h3" fontSize="lg" mb={4}>
               Search
             </Heading>
@@ -165,15 +193,20 @@ const BlogPage = () => {
             <Heading as="h3" fontSize="lg" mb={4}>
               Latest Post
             </Heading>
-            <VStack spacing={4} align="start">
+            <VStack spacing={4} align="start" mt={10}>
               {blogPosts.slice(0, 3).map((post, index) => (
-                <Box key={index}>
-                  <Text color="gray.500" fontSize="sm">
-                    {post.date}
-                  </Text>
-                  <Heading as="h4" fontSize="md">
-                    {post.title}
-                  </Heading>
+                <Box key={index} width="full">
+                  <HStack spacing={4}>
+                    <Image src={post.img} alt={post.title} boxSize="80px" objectFit="cover" borderRadius={"10px"} />
+                    <Box>
+                      <Heading as="h4" fontSize="md">
+                        {post.title}
+                      </Heading>
+                      <Text color="gray.500" fontSize="sm" mt={4}>
+                        {post.date}
+                      </Text>
+                    </Box>
+                  </HStack>
                 </Box>
               ))}
             </VStack>
@@ -194,6 +227,26 @@ const BlogPage = () => {
             </VStack>
           </Box>
 
+          <Box mb={"3rem"}>
+            {/* <Card>
+              <CardHeader>
+                <Heading size='md'> Customer dashboard</Heading>
+              </CardHeader>
+              <CardBody>
+                <Text>View a summary of all your customers over the last month.</Text>
+              </CardBody>
+              <CardFooter>
+                <Button
+                  onClick={handleClick}
+                  variant="outline" mx={2} boxShadow="lg" borderRadius="50%"
+                  label="Start Now"
+                  icon={<FaArrowRight/>}
+                />
+              </CardFooter>
+            </Card> */}
+            <Image src={blogImageFour} alt="card"/>
+          </Box>
+
           {/* Tags */}
           <Box>
             <Heading as="h3" fontSize="lg" mb={4}>
@@ -210,14 +263,7 @@ const BlogPage = () => {
         </Box>
       </Flex>
 
-      {/* Footer */}
-      <Divider my={10} />
-      <Box textAlign="center" mt={10}>
-        <Text>
-          Copyright © 2024 EduBlink | Developed by DevsBlink. All rights
-          reserved.
-        </Text>
-      </Box>
+
     </Box>
   );
 };

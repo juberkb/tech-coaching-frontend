@@ -1,172 +1,138 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import 'animate.css';
-import navImage from "../../assets/mega-menu-image.webp"
-import "../navbar/navbar.css";
-import { RiArrowDownSLine } from "react-icons/ri";
-import { FiArrowRight } from "react-icons/fi";
-import { CiSearch } from "react-icons/ci";
-import { PiShoppingCartThin } from "react-icons/pi";
-import webLogo from "../../assets/logo-dark.png";
-import Button from '../../components/button/Button';
+import React from "react";
+import {
+  Box,
+  SimpleGrid,
+  Image,
+  Text,
+  Button,
+  Badge,
+  Stack,
+  useColorModeValue,
+Heading,
+} from "@chakra-ui/react";
+import courseImageOne from "../../assets/course-img-1.jpg"
+import courseImageTwo from "../../assets/course-img-2.jpg"
+import courseImageThree from "../../assets/course-img-3.jpg"
 
-const Navbar = ({ data }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState({
-    home: false,
-    services: false,
-    about: false,
-    contact: false
-  });
+const courses = [
+  {
+    title: "Starting SEO as your Home Based Business",
+    category: "Business",
+    rating: 5.0,
+    reviews: 3,
+    imageUrl: courseImageOne,
+  },
+  {
+    title: "Grow Personal Financial Security Thinking & Principles",
+    category: "Motivation",
+    rating: 5.0,
+    reviews: 2,
+    imageUrl: courseImageTwo,
+  },
+  {
+    title: "Grow Personal Financial Security Thinking & Principles",
+    category: "Motivation",
+    rating: 5.0,
+    reviews: 2,
+    imageUrl: courseImageThree,
+  },
+  {
+    title: "Grow Personal Financial Security Thinking & Principles",
+    category: "Motivation",
+    rating: 5.0,
+    reviews: 2,
+    imageUrl: courseImageTwo,
+  },
+  {
+    title: "Grow Personal Financial Security Thinking & Principles",
+    category: "Motivation",
+    rating: 5.0,
+    reviews: 2,
+    imageUrl: courseImageThree,
+  },
+  {
+    title: "Grow Personal Financial Security Thinking & Principles",
+    category: "Motivation",
+    rating: 5.0,
+    reviews: 2,
+    imageUrl: courseImageOne,
+  },
+  
+];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleSearch = () => {
-    setIsSearchOpen(!isSearchOpen);
-  };
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    const query = e.target.value.toLowerCase();
-    const filtered = data.filter(item => item.name.toLowerCase().includes(query));
-    setFilteredData(filtered);
-  };
-
-  const toggleDropdown = (menu) => {
-    setIsDropdownOpen(prevState => ({
-      ...prevState,
-      [menu]: !prevState[menu]
-    }));
-  };
-
+const CourseCard = ({ course }) => {
   return (
-    <header className="navbar animate_animated animate_backInDown">
-      <div className="navbar-container">
-        <div className="logo">
-          <img src={webLogo} alt="EduBlink" width="100%" />
-        </div>
+    <Box
+      bg={useColorModeValue("white", "gray.800")}
+      maxW="sm"
+      borderWidth="1px"
+      rounded="lg"
+      shadow="lg"
+      position="relative"
+      overflow="hidden"
+      _hover={{ transform: "scale(1.02)", transition: "0.3s ease-in-out" }}
+      role="group"
+    >
+      {/* Course Image */}
+      <Image src={course.imageUrl} alt={`Picture of ${course.title}`} />
 
-        {/* Navigation Links */}
-        <nav className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
-          <div className="dropdown">
-            <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span>Home <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
-            </Link>
-            {isDropdownOpen.home && (
-              <div className="dropdown-menu multi-column"  >
-                <div className="column">
-                  <ul>
-                    <li><Link to="/edublink-education">EduBlink Education</Link></li>
-                    <li><Link to="/distant-learning">Distant Learning</Link></li>
-                    <li><Link to="/university">University</Link></li>
-                    <li><Link to="/online-academy">Online Academy</Link></li>
-                  </ul>
-                </div>
-                <div className="column">
-                  <ul>
-                    <li><Link to="/remote-training">Remote Training</Link></li>
-                    <li><Link to="/business-coach">Business Coach</Link></li>
-                    <li><Link to="/motivation">Motivation</Link></li>
-                    <li><Link to="/programming">Programming</Link></li>
-                  </ul>
-                </div>
-                <div className="column">
-                  <img src={navImage} alt='navbar  image' />
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="dropdown">
-            <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span>Pages <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
-            </Link>
-            {isDropdownOpen.home && (
-              <div className="dropdown-menu multi-column">
-                <div className="column">
-                  <ul>
-                    <li><Link to="/edublink-education">EduBlink Education</Link>
-                      <ul>
-                        <li>abc</li>
-                        <li>abc</li></ul></li>
-                    <li><Link to="/distant-learning">Distant Learning</Link></li>
-                    <li><Link to="/university">University</Link></li>
-                    <li><Link to="/online-academy">Online Academy</Link></li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="dropdown">
-            <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span>Courses</span>
-            </Link>
-              </div>
-      
-              <div className="dropdown">
-            <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span>Blogs </span>
-            </Link>
-              </div>
+      {/* Course Content */}
+      <Box
+      bg={"white"}
+        p="6"
+        transition="all 0.3s ease"
+        position="relative"
+        _groupHover={{ transform: "translateY(-50px)" }} 
+      >
+        {/* Category and Rating */}
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Badge rounded="full" px="2" colorScheme="teal">
+            {course.category}
+          </Badge>
+          <Text fontWeight="bold">{course.rating} / 5.0</Text>
+        </Stack>
 
-              <div className="dropdown">
-            <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span>Contact <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
-            </Link>
-            {isDropdownOpen.home && (
-              <div className="dropdown-menu multi-column">
-                <div className="column">
-                  <ul>
-                    <li><Link to="/edublink-education">Contact Us</Link></li>
-                    <li><Link to="/distant-learning">Contact Ne</Link></li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
-        </nav>
+        {/* Course Title */}
+        <Text mt="2" fontWeight="semibold" lineHeight="tight" noOfLines={2}>
+          {course.title}
+        </Text>
 
-        {/* Search & Cart */}
-        <div className="search-container">
-          <button className="search-icon" onClick={toggleSearch} style={{ marginRight: "2rem" }}>
-            <CiSearch color='black' fontSize="1.8rem " />
-          </button>
-          <button className="chat-icon" style={{ marginRight: "3rem" }}>
-            <PiShoppingCartThin color='black' fontSize="1.8rem" />
-          </button>
-          <Button
-            label="Find Courses"
-            fontWeight="normal"
-            icon={<FiArrowRight />}
-          />
-        </div>
-      </div>
-      <button className={`menu-button ${isMenuOpen ? 'open' : ''}`}
-            onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      {/* Search Results */}
-      {isSearchOpen && searchQuery && (
-        <div className="search-results">
-          {filteredData.length > 0 ? (
-            filteredData.map((item, index) => (
-              <Link key={index} to={item.link} className="search-result-item" onClick={() => setIsSearchOpen(false)}>
-                {item.name}
-              </Link>
-            ))
-          ) : (
-            <p className="no-results">No results found</p>
-          )}
-        </div>
-      )}
-    </header>
+        {/* Hidden Button */}
+        <Box
+          display="none"
+          _groupHover={{
+            display: "block",
+            mt: "4", // Moves the button down to show up from the hidden content
+          }}
+          textAlign="center"
+        >
+          <Button colorScheme="blue" size="sm">
+            Enroll Now
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
-export default Navbar;
+const CourseGrid = () => {
+  return (
+    <Box mt={"6rem"}>
+      {/* course Heading */}
+      <Box textAlign="center" mb={10} bg={"#F5F9FA"} py={"5.5rem"} >
+        <Heading as="h1" fontSize="3.5rem" >
+        Archives: Courses
+        </Heading>
+        <Text mt={4}>Home &gt; Courses</Text>
+      </Box>
+
+    <SimpleGrid columns={[1, 2, 3]} spacing={10} p={5}>
+      {courses.map((course, index) => (
+        <CourseCard key={index} course={course} />
+      ))}
+    </SimpleGrid>
+    </Box>
+  );
+};
+
+export default CourseGrid;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FiArrowRight } from 'react-icons/fi'; // Import right arrow icon
 import './button.css';
 
 const Button = ({ label, onClick, type = 'button', size = 'medium', color = 'primary', disabled = false, icon }) => {
@@ -31,7 +30,6 @@ Button.defaultProps = {
   type: 'button',
   size: 'medium',
   disabled: false,
-  icon: <FiArrowRight />, // Set a default icon (right arrow)
 };
 
 export default Button;

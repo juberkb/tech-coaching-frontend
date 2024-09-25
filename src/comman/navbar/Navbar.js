@@ -82,7 +82,7 @@ const Navbar = ({ data }) => {
             )}
           </div>
           <div className="dropdown">
-            <Link to="/" onClick={() => toggleDropdown('home')}>
+            <Link to="#" onClick={() => toggleDropdown('home')}>
               <span>Pages <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
             </Link>
             {isDropdownOpen.home && (
@@ -114,18 +114,8 @@ const Navbar = ({ data }) => {
 
               <div className="dropdown">
             <Link to="/contactUs" onClick={() => toggleDropdown('home')}>
-              <span>Contact <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
+              <span>Contact </span>
             </Link>
-            {isDropdownOpen.home && (
-              <div className="dropdown-menu multi-column">
-                <div className="column">
-                  <ul>
-                    <li><Link to="/edublink-education">Contact Us</Link></li>
-                    <li><Link to="/distant-learning">Contact Ne</Link></li>
-                  </ul>
-                </div>
-              </div>
-            )}
           </div>
         </nav>
 

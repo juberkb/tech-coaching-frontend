@@ -1,8 +1,10 @@
 import React from 'react';
 import "../Styles/allStyles.css"
-import { Box, VStack, HStack, SimpleGrid, GridItem, Text, Input, Link, Icon, Flex } from '@chakra-ui/react';
+import { Box, VStack, HStack, SimpleGrid, GridItem, Text, Input, Link, Icon, Flex, Image } from '@chakra-ui/react';
 import { FaFacebook, FaLinkedin, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import Button from '../../components/button/Button';
+import webLogo from "../../assets/logo-dark.png";
+
 const Footer = () => {
   const handleClick = () => {
     alert('Button clicked!');
@@ -10,18 +12,17 @@ const Footer = () => {
 
   return (
     <Box bg="#F0F4F5" 
-    padding={{ base: '6rem', md: '1rem' }} >
+    padding={{ base: '6rem', md: '6rem' }} >
       <SimpleGrid columns={[1, 1, 2, 4]} spacing={8} maxW="1200px" mx="auto" px={4} className="footer">
         {/* EduBlink Info (Logo, Address, Contact Info) */}
         <GridItem>
           <VStack align={["flex-start", "flex-start", "flex-start", "flex-start"]}>
             <Flex direction={["column", "column", "row"]} align="flex-start" w="full" justify="space-between">
-              <Box>
-                <Text fontSize="xl" fontWeight="bold" mb={2}>
-                  EduBlink
-                </Text>
+              <Box className="logo">
+          <Image src={webLogo} alt="EduBlink" width="50%" />
+
                 <Text fontSize="sm">
-                  Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+                  Lorem ipsum dolor amet consecto adi <br/>pisicing elit sed eiusm tempor incidid unt <br/>labore dolore.
                 </Text>
                 <Text mt={4}><strong>Add:</strong> 70-80 Upper St Norwich NR2</Text>
                 <Text><strong>Call:</strong> +01 123 5641 231</Text>

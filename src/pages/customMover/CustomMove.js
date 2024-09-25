@@ -31,12 +31,6 @@ function CustomMove() {
           <Image src={img4} alt="Brand 4" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img5} alt="Brand 5" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img6} alt="Brand 6" boxSize={["80px", "120px", "150px"]}  />
-          {/* <Image src={img1} alt="Brand 1" boxSize={["80px", "120px", "150px"]}  />
-          <Image src={img2} alt="Brand 2" boxSize={["80px", "120px", "150px"]}  />
-          <Image src={img3} alt="Brand 3" boxSize={["80px", "120px", "150px"]}  />
-          <Image src={img4} alt="Brand 4" boxSize={["80px", "120px", "150px"]}  />
-          <Image src={img5} alt="Brand 5" boxSize={["80px", "120px", "150px"]}  />
-          <Image src={img6} alt="Brand 6" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img1} alt="Brand 1" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img2} alt="Brand 2" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img3} alt="Brand 3" boxSize={["80px", "120px", "150px"]}  />
@@ -48,7 +42,13 @@ function CustomMove() {
           <Image src={img3} alt="Brand 3" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img4} alt="Brand 4" boxSize={["80px", "120px", "150px"]}  />
           <Image src={img5} alt="Brand 5" boxSize={["80px", "120px", "150px"]}  />
-          <Image src={img6} alt="Brand 6" boxSize={["80px", "120px", "150px"]}  /> */}
+          <Image src={img6} alt="Brand 6" boxSize={["80px", "120px", "150px"]}  />
+          <Image src={img1} alt="Brand 1" boxSize={["80px", "120px", "150px"]}  />
+          <Image src={img2} alt="Brand 2" boxSize={["80px", "120px", "150px"]}  />
+          <Image src={img3} alt="Brand 3" boxSize={["80px", "120px", "150px"]}  />
+          <Image src={img4} alt="Brand 4" boxSize={["80px", "120px", "150px"]}  />
+          <Image src={img5} alt="Brand 5" boxSize={["80px", "120px", "150px"]}  />
+          <Image src={img6} alt="Brand 6" boxSize={["80px", "120px", "150px"]}  />
         </HStack>
       </Box>
     </Box>
