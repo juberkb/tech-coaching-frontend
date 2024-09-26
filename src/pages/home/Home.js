@@ -13,6 +13,7 @@ import courseImageLeft from "../../assets/course-img-1.jpg"
 import courseImageCenter from "../../assets/course-img-2.jpg"
 import courseImageRight from "../../assets/course-img-3.jpg"
 import studentImageBottomOne from "../../assets/course-40-590x430.jpg"
+import bgBorder from "../../assets/programming-bg.svg"
 import { HiCheck } from "react-icons/hi";
 import { FiArrowRight } from 'react-icons/fi';
 import { MdOutlinePlayLesson } from "react-icons/md";
@@ -92,16 +93,16 @@ export default function HomePage() {
           <Image
             src={topHomeImage}
             alt="student avatar Image"
-            mt={"10rem"}
+            mt={"8rem"}
             ml={"10rem"}
             className='foreground-image'
           />
         </Box>
       </Flex>
 
-      <Box mt={"-17rem"}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,138.7C1120,149,1280,203,1360,229.3L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-
+      <Box mt={"-11rem"}>
+        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,138.7C1120,149,1280,203,1360,229.3L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg> */}
+<Image src={bgBorder} alt='bg_border'/>
         <Flex direction={["column", "row"]} justify="space-around" align="center" pt={10} mt={"-9rem"}>
           <Flex direction="row" align="center" textAlign="left" mb={6}>
             <Box
@@ -399,68 +400,6 @@ export default function HomePage() {
       </Button>
     </VStack>
 
-      {/* FAQ Section */}
-      {/* <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={10} p={10} className='faqsBGImage'>
-        <Box p={10} ml={"3rem"}>
-          <Text>FAQ&apos;s</Text>
-          <Heading mb={5} fontWeight={"600"}>Learn Your Best Education<br /> Culture with Edublink</Heading>
-          <Text mb={10}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna.
-          </Text>
-          <Text color={"#30b979"} bg={"#F0F4F5"} width={"165px"} p={4} borderRadius={"10px"}>General Questions</Text><br />
-          <Text ml={"1rem"}>Community</Text><br />
-          <Text ml={"1rem"}>Support</Text>
-        </Box>
-        <Box p={10} mr={"3rem"}>
-          <Accordion allowToggle>
-            <AccordionItem border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How can I contact a school directly?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How do I find a school where I want to study?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>Where should I study abroad?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How to find your misiing course?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-            <AccordionItem mt={10} border={"none"} boxShadow={"0px 5px 15px rgba(0, 0, 0, 0.35)"}>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" p={3}>How Long Do I get Support and updates ?</Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-      </Grid> */}
       <FaqSection/>
 
       <CustomMove />
