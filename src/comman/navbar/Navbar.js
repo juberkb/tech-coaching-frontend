@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'animate.css';
-import navImage from "../../assets/mega-menu-image.webp"
+import navImage from "../../assets/mega-menu-image.webp";
 import "../navbar/navbar.css";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { FiArrowRight } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
 import { PiShoppingCartThin } from "react-icons/pi";
 import webLogo from "../../assets/logo-dark.png";
-import Button from '../../components/button/Button';
 
 const Navbar = ({ data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,35 +29,48 @@ const Navbar = ({ data }) => {
     setIsSearchOpen(!isSearchOpen);
   };
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    const query = e.target.value.toLowerCase();
-    const filtered = data.filter(item => item.name.toLowerCase().includes(query));
-    setFilteredData(filtered);
-  };
+  // const handleSearch = (e) => {
+  //   setSearchQuery(e.target.value);
+  //   const query = e.target.value.toLowerCase();
+  //   const filtered = data.filter(item => item.name.toLowerCase().includes(query));
+  //   setFilteredData(filtered);
+  // };
 
   const toggleDropdown = (menu) => {
-    setIsDropdownOpen(prevState => ({
-      ...prevState,
-      [menu]: !prevState[menu]
-    }));
+    setIsDropdownOpen(prevState => {
+      // Close all dropdowns except the one that is being toggled
+      const newState = {
+        home: false,
+        services: false,
+        about: false,
+        contact: false
+      };
+      newState[menu] = !prevState[menu]; // Toggle the selected dropdown
+      return newState;
+    });
   };
 
+  // const [dropdownTimeout, setDropdownTimeout] = useState(null);
+
   return (
-    <header className="navbar ">
+    <header className="navbar" style={{ width: "100%", overflow: "hidden" }}>
       <div className="navbar-container">
-        <div className="logo">
-          <img src={webLogo} alt="EduBlink" width="100%" />
+        <div className='logo-menu-row'>
+          <div className="logo">
+            <img src={webLogo} alt="EduBlink" className='nav bar logo' />
+          </div>
+          <button className={`menu-button ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+            <span></span>
+          </button>
         </div>
 
-        {/* Navigation Links */}
         <nav className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
           <div className="dropdown">
             <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span>Home <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
+              <span className="nav-item">Home <RiArrowDownSLine  className='nav-item-icon'/></span>
             </Link>
             {isDropdownOpen.home && (
-              <div className="dropdown-menu multi-column"  >
+              <div className="dropdown-menu multi-column">
                 <div className="column">
                   <ul>
                     <li><Link to="/edublink-education">EduBlink Education</Link></li>
@@ -76,71 +88,46 @@ const Navbar = ({ data }) => {
                   </ul>
                 </div>
                 <div className="column">
-                  <img src={navImage} alt='navbar  image' />
+                  <img src={navImage} alt='navbars navlink third coloumn' />
                 </div>
               </div>
             )}
           </div>
+
           <div className="dropdown">
-            <Link to="#" onClick={() => toggleDropdown('home')}>
-              <span>Pages <RiArrowDownSLine style={{ marginLeft: ".5rem" }} /></span>
+            <Link to="#" onClick={() => toggleDropdown('pages')}>
+              <span className="nav-item">Pages <RiArrowDownSLine className='nav-item-icon'/></span>
             </Link>
-            {isDropdownOpen.home && (
+            {isDropdownOpen.pages && (
               <div className="dropdown-menu multi-column">
                 <div className="column">
                   <ul>
-                    <li><Link to="/abouUs">About Us</Link></li>
-                    <li><Link to="/distant-learning">Instructors</Link></li>
-                    <li><Link to="/university">Event Pages</Link></li>
-                    <li><Link to="/online-academy">Shop pages</Link></li>
-                    <li><Link to="/online-academy">Comming Soon</Link></li>
-
+                    <li><Link to="/aboutUs">About Us</Link></li>
+                    <li><Link to="/instructors">Instructors</Link></li>
+                    <li><Link to="/event-pages">Event Pages</Link></li>
+                    <li><Link to="/shop-pages">Shop Pages</Link></li>
+                    <li><Link to="/coming-soon">Coming Soon</Link></li>
                   </ul>
                 </div>
               </div>
             )}
           </div>
-          <div className="dropdown">
-            <Link to="/courses" onClick={() => toggleDropdown('home')}>
-              <span>Courses</span>
-            </Link>
-              </div>
-      
-              <div className="dropdown">
-            <Link to="/blogs" onClick={() => toggleDropdown('home')}>
-              <span>Blogs </span>
-            </Link>
-              </div>
-
-              <div className="dropdown">
-            <Link to="/contactUs" onClick={() => toggleDropdown('home')}>
-              <span>Contact </span>
-            </Link>
-          </div>
+          <Link to="/courses" className="nav-item">Courses</Link>
+          <Link to="/blogs" className="nav-item">Blogs</Link>
+          <Link to="/contactUs" className="nav-item">Contact</Link>
         </nav>
 
-        {/* Search & Cart */}
         <div className="search-container">
           <button className="search-icon" onClick={toggleSearch} style={{ marginRight: "2rem" }}>
             <CiSearch color='black' fontSize="1.8rem " />
           </button>
-          <button className="chat-icon" style={{ marginRight: "3rem" }}>
+          <button className="navSingleChartButton" style={{ marginRight: "3rem" }}>
             <PiShoppingCartThin color='black' fontSize="1.8rem" />
           </button>
-          <Button
-            label="Find Courses"
-            fontWeight="normal"
-            icon={<FiArrowRight />}
-          />
+          <button className="navSingleButton">  <span className="nav-item">Try For Free <FiArrowRight /></span></button>
         </div>
       </div>
-      <button className={`menu-button ${isMenuOpen ? 'open' : ''}`}
-            onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      {/* Search Results */}
+
       {isSearchOpen && searchQuery && (
         <div className="search-results">
           {filteredData.length > 0 ? (

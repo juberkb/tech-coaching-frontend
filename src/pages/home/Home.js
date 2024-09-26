@@ -1,11 +1,8 @@
 import { React, useState } from 'react';
-
 import "../../comman/Styles/allStyles.css"
 import { Box, Grid, GridItem, VStack, Heading, Text, Image, Flex, SimpleGrid,  } from '@chakra-ui/react';
-
 import Button from '../../components/button/Button';
 import { FiArrowRight } from 'react-icons/fi';
-
 import Testimonials from '../testis/Testimonials';
 import CustomMove from '../customMover/CustomMove';
 import topHomeImage from "../../assets/programming-banner.webp"
@@ -22,18 +19,14 @@ import { HiCheck } from "react-icons/hi";
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { FaLaptopCode, FaUserGraduate, FaRegComments, FaRegCheckSquare } from "react-icons/fa";
-
 import StarRatings from '../../comman/startRating/StarRatings';
 import FaqSection from '../Faq\'s/FaqSection';
-
-
 
 export default function HomePage() {
 
   const handleClick = () => {
     alert('Button clicked!');
   };
-
   const [bgPosition, setBgPosition] = useState({
     mainBg: '32% 25%, 100% 65%, 90% 50%, 90% 25%, 40% 65%, 40% 100%, 92% 39%',
   });
@@ -55,11 +48,9 @@ export default function HomePage() {
 
     setBgPosition({ mainBg: newPosition });
   };
-
   const [aboutBgPosition, setAboutBgPosition] = useState({
     aboutBg: '10% 1%, 1% 40%, 100% 100%',
   });
-
   const handleMouseMoveAbout = (e) => {
     const { clientX, clientY, currentTarget } = e;
     const { width, height, left, top } = currentTarget.getBoundingClientRect();
@@ -81,108 +72,44 @@ export default function HomePage() {
         mt={{ base: "5rem", md: "-5rem" }}
         direction={['column', 'row']} align="center"
         justify="space-between" p={8} onMouseMove={handleMouseMove}>
-        <Box
-          maxW={{ base: "100%", md: "500px" }}
-          ml={{ base: "-1rem", md: "5rem" }}
-          p={{ base: "1rem", md: "0" }}
-        >
-          <Heading
-            as="h1"
-            size="2xl"
-            fontSize={{ base: "2rem", md: "3.5rem" }}
-            mb={{ base: 4, md: 6 }}
+        <Box maxW={{ base: "100%", md: "500px" }} ml={{ base: "-1rem", md: "5rem" }} p={{ base: "1rem", md: "0" }}>
+          <Heading as="h1" size="2xl" fontSize={{ base: "2rem", md: "3.5rem" }} mb={{ base: 4, md: 6 }}
             fontWeight="700">Build Your <Text as="span" color="red">Programming</Text> Skill with EdubLink
           </Heading>
-
-          <Text
-            mb={{ base: 4, md: 6 }} >
+          <Text mb={{ base: 4, md: 6 }}>
             Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.
           </Text>
-
-          <Button
-            label="Find Courses"
-            onClick={handleClick}
-            icon={<FiArrowRight />}
-          />
+          <Button label="Find Courses" onClick={handleClick} icon={<FiArrowRight />} />
         </Box>
-
-
+      
         <Box
-          className="homeBackground-container-image"
-          style={{ backgroundPosition: bgPosition.mainBg }}
-          w="100%"
-          h="auto"
-          p={{ base: "1rem", md: "5rem" }}
-        >
-          <Image
-            src={topHomeImage}
-            alt="student avatar Image"
-            visibility={{ base: "hidden", md: "visible" }}
-            mt={{ base: "2rem", md: "15rem" }}
-            ml={{ base: "-.7rem", md: "10rem" }}
-            className='foreground-image'
-            w={{ base: "100%", md: "auto" }}
-            h={{ base: "auto", md: "auto" }}
-          />
+          className="homeBackground-container-image" style={{ backgroundPosition: bgPosition.mainBg }} w="100%" h="auto" p={{ base: "1rem", md: "5rem" }}>
+          <Image src={topHomeImage} alt="student avatar Image" visibility={{ base: "hidden", md: "visible" }} mt={{ base: "2rem", md: "15rem" }} ml={{ base: "-.7rem", md: "10rem" }} className='foreground-image' w={{ base: "100%", md: "auto" }} h={{ base: "auto", md: "auto" }}/>
         </Box>
-
       </Flex>
 
       {/* Curved SVG */}
       <Box mt={{ base: "-4rem", md: "-17rem" }}>
-       <Image src={bgCurveBorder} alt='bg_Curve_Border'
-       height={{base:"20vh", md:"auto"}}
-       width={{base:"auto", md:"auto"}}/>
+       <Image src={bgCurveBorder} alt='bg_Curve_Border' height={{base:"20vh", md:"auto"}} width={{base:"auto", md:"auto"}}/>
 
         {/* Flex for Course Details and Instructors */}
         <Flex
-          direction={{ base: "column", md: "row" }}
-          justify="space-around"
-          align="center"
-          pt={10}
-          mt={{ base: "-40rem", md: "-36rem" }}
-          ml={{base:"2rem", md:0}}
-
-        >
+          direction={{ base: "column", md: "row" }} justify="space-around" align="center" pt={10} mt={{ base: "-40rem", md: "-36rem" }} ml={{base:"2rem", md:0}}>
           {/* First Box: Online Courses */}
-          <Flex
-            direction="row"
-            align="center"
-            textAlign="left"
-            mb={6}
-            w={{ base: "100%", md: "auto" }}
-            justifyContent={{ base: "flex-start", md: "flex-start" }}
-          >
-            <Box
-              bg="white"
-              borderRadius="50%"
-              boxSize="80px"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              mr={4}
-               boxShadow="0px 5px 15px rgba(0, 0, 0, 0.35)"
-            >
+          <Flex direction="row" align="center" textAlign="left" mb={6} w={{ base: "100%", md: "auto" }} justifyContent={{ base: "flex-start", md: "flex-start" }} >
+            <Box bg="white" borderRadius="50%" boxSize="80px" display="flex" justifyContent="center" alignItems="center" mr={4} boxShadow="0px 5px 15px rgba(0, 0, 0, 0.35)" >
               {/* Icon */}
               <FaLaptopCode size="40px" color="#6b46c1" />
             </Box>
             <Box>
-              <Heading as="h3" size="md">
-                3,020
-              </Heading>
+              <Heading as="h3" size="md">3,020</Heading>
               <Text>Online Courses</Text>
             </Box>
           </Flex>
-
+          
           {/* Second Box: Top Instructors */}
-
           <Flex
-            direction="row"
-            align="center"
-            textAlign="left"
-            mb={6}
-            w={{ base: "100%", md: "auto" }}
-            justifyContent={{ base: "flex-start", md: "flex-start" }}
+            direction="row" align="center"textAlign="left" mb={6} w={{ base: "100%", md: "auto" }} justifyContent={{ base: "flex-start", md: "flex-start" }}
           >
             <Box
               bg="white"
@@ -645,35 +572,20 @@ export default function HomePage() {
                   transition: "transform 0.5s ease-in-out",
                 }}
               >
-                <Image
-                  src={courseImageCenter}
-                  alt="Article Image"
-                  mb={3}
-                  borderRadius="md"
-                  transition="transform 0.5s ease-in-out"
-                  width="100%"
-                />
+                <Image src={courseImageCenter} alt="Article Image" mb={3} borderRadius="md" transition="transform 0.5s ease-in-out" width="100%" />
               </Box>
             </Box>
             <Text fontSize="xs" color="gray.500" mb={2}>LEARNING</Text>
-            <Heading as="h3" fontSize="lg" mb={3}>
-              Connecting the Dots in Education with Learning Nexus
-            </Heading>
+            <Heading as="h3" fontSize="lg" mb={3}> Connecting the Dots in Education with Learning Nexus </Heading>
             <Flex align="center" color="gray.600" gap={2}>
               <FaRegCheckSquare color='#30b979' />
-              <Text>12 Nov, 2023</Text>
-              <Text>|</Text>
+              <Text>12 Nov, 2023</Text> <Text>|</Text>
               <FaRegComments color='#30b979' />
-              <Text>0 Comments</Text>
-            </Flex>
-            <Text fontSize="sm" mt={2}>
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-            </Text>
+              <Text>0 Comments</Text></Flex>
+            <Text fontSize="sm" mt={2}>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </Text>
           </GridItem>
         </Grid>
       </Box>
     </Box>
- 
-
   );
 }
