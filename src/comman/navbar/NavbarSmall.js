@@ -1,91 +1,139 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Flex,
-  IconButton,
-  Stack,
-  Link,
-  useDisclosure,
-  Collapse,
-  Heading,
-  Input,
-} from "@chakra-ui/react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { IoMdClose } from "react-icons/io";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import 'animate.css';
+import navImage from "../../assets/mega-menu-image.webp";
+import "../navbar/navbar.css";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { FiArrowRight } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
+import { PiShoppingCartThin } from "react-icons/pi";
+import webLogo from "../../assets/logo-dark.png";
 
-const Navbar = () => {
-  const { isOpen, onToggle } = useDisclosure();
-  const [showSearch, setShowSearch] = useState(false);
+const Navbar = ({ data }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState({
+    home: false,
+    services: false,
+    about: false,
+    contact: false
+  });
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const toggleDropdown = (menu) => {
+    setIsDropdownOpen(prevState => {
+      const newState = {
+        home: false,
+        services: false,
+        about: false,
+        contact: false
+      };
+      newState[menu] = !prevState[menu]; // Toggle the selected dropdown
+      return newState;
+    });
+  };
+
+
+  
   return (
-    <Box>
-      {/* Navbar for Small Devices */}
-      <Flex
-        bg={"white"}
-        color={"gray.600"}
-        minH={"60px"}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={"gray.200"}
-        align={"center"}
-        justify={"space-between"}
-      >
-        {/* Logo */}
-        <Heading as="h1" size="md">
-          EduBlink
-        </Heading>
+    <header className="navbar" style={{ width: "100%", overflow: "hidden" }}>
+      <div className="navbar-container">
+        <div className='logo-menu-row'>
+          <div className="logo">
+            <img src={webLogo} alt="EduBlink" className='nav bar logo' />
+          </div>
+          <button className={`menu-button ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+            <span></span>
+          </button>
+        </div>
 
-        {/* Search Icon */}
-        <IconButton
-          icon={<CiSearch  />}
-          variant={"ghost"}
-          aria-label={"Search"}
-          onClick={() => setShowSearch(!showSearch)}
-        />
+        <nav className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+          <div className="dropdown">
+            <Link to="/" onClick={() => toggleDropdown('home')}>
+              <span className="nav-item">Home <RiArrowDownSLine  className='nav-item-icon'/></span>
+            </Link>
+            {isDropdownOpen.home && (
+              <div className="dropdown-menu multi-column">
+                <div className="column">
+                  <ul>
+                    <li><Link to="/edublink-education">EduBlink Education</Link></li>
+                    <li><Link to="/distant-learning">Distant Learning</Link></li>
+                    <li><Link to="/university">University</Link></li>
+                    <li><Link to="/online-academy">Online Academy</Link></li>
+                  </ul>
+                </div>
+                <div className="column">
+                  <ul>
+                    <li><Link to="/remote-training">Remote Training</Link></li>
+                    <li><Link to="/business-coach">Business Coach</Link></li>
+                    <li><Link to="/motivation">Motivation</Link></li>
+                    <li><Link to="/programming">Programming</Link></li>
+                  </ul>
+                </div>
+                <div className="column">
+                  <img src={navImage} alt='navbars navlink third coloumn' />
+                </div>
+              </div>
+            )}
+          </div>
 
-        {/* Hamburger Menu Icon */}
-        <IconButton
-          icon={
-            isOpen ? (
-              <IoMdClose w={3} h={3} />
-            ) : (
-              <xHamburgerMenu w={5} h={5} />
-            )
-          }
-          variant={"ghost"}
-          aria-label={"Toggle Navigation"}
-          onClick={onToggle}
-        />
-      </Flex>
+          <div className="dropdown">
+            <Link to="#" onClick={() => toggleDropdown('pages')}>
+              <span className="nav-item">Pages <RiArrowDownSLine className='nav-item-icon'/></span>
+            </Link>
+            {isDropdownOpen.pages && (
+              <div className="dropdown-menu multi-column">
+                <div className="column">
+                  <ul>
+                    <li><Link to="/aboutUs">About Us</Link></li>
+                    <li><Link to="/instructors">Instructors</Link></li>
+                    <li><Link to="/event-pages">Event Pages</Link></li>
+                    <li><Link to="/shop-pages">Shop Pages</Link></li>
+                    <li><Link to="/coming-soon">Coming Soon</Link></li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+          <Link to="/courses" className="nav-item">Courses</Link>
+          <Link to="/blogs" className="nav-item">Blogs</Link>
+          <Link to="/contactUs" className="nav-item">Contact</Link>
+        </nav>
 
-      {/* Search Input - Only visible when clicking the search icon */}
-      {showSearch && (
-        <Box px={4} py={2}>
-          <Input placeholder="Search..." size="sm" />
-        </Box>
+        <div className="search-container">
+          <button className="search-icon" onClick={toggleSearch} style={{ marginRight: "2rem" }}>
+            <CiSearch color='black' fontSize="1.8rem " />
+          </button>
+          <button className="navSingleChartButton" style={{ marginRight: "3rem" }}>
+            <PiShoppingCartThin color='black' fontSize="1.8rem" />
+          </button>
+          <button className="navSingleButton">  <span className="nav-item">Try For Free <FiArrowRight /></span></button>
+        </div>
+      </div>
+
+      {isSearchOpen && searchQuery && (
+        <div className="search-results">
+          {filteredData.length > 0 ? (
+            filteredData.map((item, index) => (
+              <Link key={index} to={item.link} className="search-result-item" onClick={() => setIsSearchOpen(false)}>
+                {item.name}
+              </Link>
+            ))
+          ) : (
+            <p className="no-results">No results found</p>
+          )}
+        </div>
       )}
-
-      {/* Collapse component for the Menu */}
-      <Collapse in={isOpen} animateOpacity>
-        <Stack
-          bg={"white"}
-          p={4}
-          display={{ md: "none" }}
-          spacing={4}
-          as={"nav"}
-        >
-          <Link href="#">Home</Link>
-          <Link href="#">Courses</Link>
-          <Link href="#">About Us</Link>
-          <Link href="#">Contact</Link>
-          <Link href="#">Blog</Link>
-          <Link href="#">Pricing</Link>
-        </Stack>
-      </Collapse>
-    </Box>
+    </header>
   );
 };
 

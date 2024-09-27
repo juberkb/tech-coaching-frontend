@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import 'animate.css';
 import navImage from "../../assets/mega-menu-image.webp";
 import "../navbar/navbar.css";
@@ -21,6 +21,8 @@ const Navbar = ({ data }) => {
     contact: false
   });
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -29,16 +31,8 @@ const Navbar = ({ data }) => {
     setIsSearchOpen(!isSearchOpen);
   };
 
-  // const handleSearch = (e) => {
-  //   setSearchQuery(e.target.value);
-  //   const query = e.target.value.toLowerCase();
-  //   const filtered = data.filter(item => item.name.toLowerCase().includes(query));
-  //   setFilteredData(filtered);
-  // };
-
   const toggleDropdown = (menu) => {
     setIsDropdownOpen(prevState => {
-      // Close all dropdowns except the one that is being toggled
       const newState = {
         home: false,
         services: false,
@@ -50,8 +44,10 @@ const Navbar = ({ data }) => {
     });
   };
 
-  // const [dropdownTimeout, setDropdownTimeout] = useState(null);
-
+  const handleEnquiryNowClick = () => {
+    navigate('/contactUs'); // Change to your Contact Us route
+  };
+  
   return (
     <header className="navbar" style={{ width: "100%", overflow: "hidden" }}>
       <div className="navbar-container">
@@ -67,7 +63,7 @@ const Navbar = ({ data }) => {
         <nav className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
           <div className="dropdown">
             <Link to="/" onClick={() => toggleDropdown('home')}>
-              <span className="nav-item">Home <RiArrowDownSLine  className='nav-item-icon'/></span>
+              <span className="nav-item">Home <RiArrowDownSLine className='nav-item-icon'/></span>
             </Link>
             {isDropdownOpen.home && (
               <div className="dropdown-menu multi-column">
@@ -88,7 +84,7 @@ const Navbar = ({ data }) => {
                   </ul>
                 </div>
                 <div className="column">
-                  <img src={navImage} alt='navbars navlink third coloumn' />
+                  <img src={navImage} alt='navbars navlink third column' />
                 </div>
               </div>
             )}
@@ -124,7 +120,10 @@ const Navbar = ({ data }) => {
           <button className="navSingleChartButton" style={{ marginRight: "3rem" }}>
             <PiShoppingCartThin color='black' fontSize="1.8rem" />
           </button>
-          <button className="navSingleButton">  <span className="nav-item">Try For Free <FiArrowRight /></span></button>
+          {/* Updated button here */}
+          <button className="navSingleButton" onClick={handleEnquiryNowClick}>
+            <span className="nav-item">Enquiry Now <FiArrowRight /></span>
+          </button>
         </div>
       </div>
 

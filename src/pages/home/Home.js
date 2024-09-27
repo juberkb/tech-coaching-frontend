@@ -14,11 +14,7 @@ import courseImageLeft from "../../assets/course-img-1.jpg"
 import courseImageCenter from "../../assets/course-img-2.jpg"
 import courseImageRight from "../../assets/course-img-3.jpg"
 import studentImageBottomOne from "../../assets/course-40-590x430.jpg"
-<<<<<<< HEAD
-import bgBorder from "../../assets/programming-bg.svg"
-=======
 import bgCurveBorder from "../../assets/programming-bg.svg"
->>>>>>> 90782300838d0f1d4bdcf748801f07782dceedba
 import { HiCheck } from "react-icons/hi";
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
@@ -85,26 +81,6 @@ export default function HomePage() {
           </Text>
           <Button label="Find Courses" onClick={handleClick} icon={<FiArrowRight />} />
         </Box>
-<<<<<<< HEAD
-
-        <Box className="homeBackground-container-image" style={{ backgroundPosition: bgPosition.mainBg }}>
-          <Image
-            src={topHomeImage}
-            alt="student avatar Image"
-            mt={"8rem"}
-            ml={"10rem"}
-            className='foreground-image'
-          />
-        </Box>
-      </Flex>
-
-      <Box mt={"-11rem"}>
-        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,138.7C1120,149,1280,203,1360,229.3L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg> */}
-<Image src={bgBorder} alt='bg_border'/>
-        <Flex direction={["column", "row"]} justify="space-around" align="center" pt={10} mt={"-9rem"}>
-          <Flex direction="row" align="center" textAlign="left" mb={6}>
-=======
-      
         <Box
           className="homeBackground-container-image" style={{ backgroundPosition: bgPosition.mainBg }} w="100%" h="auto" p={{ base: "1rem", md: "5rem" }}>
           <Image src={topHomeImage} alt="student avatar Image" visibility={{ base: "hidden", md: "visible" }} mt={{ base: "2rem", md: "15rem" }} ml={{ base: "-.7rem", md: "10rem" }} className='foreground-image' w={{ base: "100%", md: "auto" }} h={{ base: "auto", md: "auto" }}/>
@@ -134,7 +110,6 @@ export default function HomePage() {
           <Flex
             direction="row" align="center"textAlign="left" mb={6} w={{ base: "100%", md: "auto" }} justifyContent={{ base: "flex-start", md: "flex-start" }}
           >
->>>>>>> 90782300838d0f1d4bdcf748801f07782dceedba
             <Box
               bg="white"
               borderRadius="50%"
@@ -536,104 +511,8 @@ export default function HomePage() {
             </Text>
           </GridItem>
 
-<<<<<<< HEAD
-      <Button
-        label="Browse Course"
-        onClick={handleClick}
-        mb="2rem"
-        colorScheme="teal"
-        size={{ base: "sm", md: "md" }}  // Responsive button size
-      >
-        Browse Course
-      </Button>
-    </VStack>
-
-      <FaqSection/>
-
-      <CustomMove />
-
-      <Testimonials />
-
-      {/* artical */}
-      <Box className='articalBgImage'>
-      {/* Ebook Download Section */}
-      <Flex 
-  direction={{ base: 'column', md: 'row' }} // Column layout on small screens
-  alignItems="center"
-  justifyContent="space-between"
-  mb={10}
-  bg="gray.50"
-  p={10}
-  borderRadius="md"
-  height={{ base: 'auto', md: '500px' }} // Auto height on small screens
-  className='articalBgImage' // Background for large screens
->
-  {/* Image Section */}
-  <Box
-    width={{ base: '100%', md: '50%' }}
-    className="articalBgAvatar" // Background for large screens
-    display={{ base: 'block', md: 'block' }} // Hide background on small screens
-    ml={{ base: "7.5rem", md: 0 }}
-
-  >
-    <Image
-      src={featureImageLeft}
-      alt="Ebook Illustration"
-      boxSize={{ base: '200px', md: '300px' }} // Smaller size for small devices
-      mb={{ base: 5, md: 0 }}
-      mx="auto" // Center image on small devices
-    />
-  </Box>
-
-  {/* Text and Button Section */}
-  <Box
-    textAlign={{ base: 'Left', md: 'left' }}
-    ml={{ base: "5rem", md: 10 }}
-    width={{ base: '100%', md: '50%' }} // Full width on small screens
-    className='articalBgText'
-  >
-    <Heading
-      as="h1"
-      size="2xl"
-      fontSize={{ base: '1.8rem', md: '2.5rem' }}
-      fontWeight="700"
-      mb={6}
-    >
-      Download Our <br /> Free{' '}
-      <Text as="span" color="red">Programming Ebook</Text>{' '}
-      <br /> From EduBlink
-    </Heading>
-
-    <Button
-      label="Download ebooks now"
-      onClick={handleClick}
-      rightIcon={<FiArrowRight />}
-    />
-  </Box>
-</Flex>
-
-
-      {/* Latest Articles Section */}
-      <Text textAlign="center" fontWeight={"700"} color={"gray"} mt={{ base: '4rem', md: '8rem' }} mb={4}>LATEST ARTICLES</Text>
-      <Heading mb={5} textAlign="center">Get News with EduBlink</Heading>
-
-      <Grid
-        templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} 
-        gap={6}
-        p={{ base: '2rem', md: '8rem' }} 
-      >
-        {/* Article 1 */}
-        <GridItem bg="white" p={5} borderRadius="md" shadow="md">
-          <Box
-            maxW="400px"
-            borderRadius="md"
-            overflow="hidden"
-            mx="auto"
-          >
-=======
           {/* Article 2 */}
           <GridItem bg="white" p={5} borderRadius="md" shadow="md">
->>>>>>> 90782300838d0f1d4bdcf748801f07782dceedba
             <Box
               maxW="400px"
               borderRadius="md"
