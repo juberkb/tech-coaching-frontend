@@ -1,0 +1,43 @@
+.embla {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.embla__viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.embla__container {
+    display: flex;
+    user-select: none;
+    justify-content: center;
+}
+
+.embla__slide {
+    position: relative;
+    min-width: 60%;
+    margin-right: -100px; /* Adjust this value as necessary */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6; /* Reduced opacity for non-active cards */
+    z-index: 1; /* Default z-index for all slides */
+}
+
+.embla__slide--active {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 10; /* Bring active slide to the front */
+}
+
+.embla__slide--left,
+.embla__slide--right {
+    transform: scale(0.85); /* Scale down adjacent cards */
+    z-index: 5; /* Lower z-index to push them behind the active card */
+    opacity: 0.8; /* Slightly higher opacity for adjacent cards */
+}
+
+.embla__slide--hidden {
+    opacity: 0; /* Fully hide non-adjacent slides */
+    pointer-events: none; /* Disable pointer events for hidden slides */
+}

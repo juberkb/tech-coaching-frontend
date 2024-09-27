@@ -1,0 +1,18 @@
+.navbar {
+    position: fixed; /* Ensure the navbar stays on top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* High z-index to ensure it layers above other content */
+  }
+  
+  .nav-links.show {
+    position: fixed; /* Ensure the dropdown menu overlays the rest of the page */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make sure the dropdown covers the screen */
+    height: 100%; /* Optional, if you want full-screen coverage */
+    background-color: rgba(255, 255, 255, 0.95); /* Give a background to differentiate from the content */
+    z-index: 1000; /* Same high z-index */
+  }
+  

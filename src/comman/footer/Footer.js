@@ -1,27 +1,28 @@
 import React from 'react';
 import "../Styles/allStyles.css"
-import { Box, VStack, HStack, SimpleGrid, GridItem, Text, Input, IconButton, Link, Icon, Flex } from '@chakra-ui/react';
+import { Box, VStack, HStack, SimpleGrid, GridItem, Text, Input, Link, Icon, Flex, Image } from '@chakra-ui/react';
 import { FaFacebook, FaLinkedin, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import Button from '../../components/button/Button';
-import { ClassNames } from '@emotion/react';
+import webLogo from "../../assets/logo-dark.png";
+
 const Footer = () => {
   const handleClick = () => {
     alert('Button clicked!');
   };
 
   return (
-    <Box bg="#F0F4F5" p={"6rem"} >
+    <Box bg="#F0F4F5" 
+    padding={{ base: '6rem', md: '6rem' }} >
       <SimpleGrid columns={[1, 1, 2, 4]} spacing={8} maxW="1200px" mx="auto" px={4} className="footer">
         {/* EduBlink Info (Logo, Address, Contact Info) */}
         <GridItem>
           <VStack align={["flex-start", "flex-start", "flex-start", "flex-start"]}>
             <Flex direction={["column", "column", "row"]} align="flex-start" w="full" justify="space-between">
-              <Box>
-                <Text fontSize="xl" fontWeight="bold" mb={2}>
-                  EduBlink
-                </Text>
+              <Box className="logo">
+          <Image src={webLogo} alt="EduBlink" width="50%" />
+
                 <Text fontSize="sm">
-                  Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+                  Lorem ipsum dolor amet consecto adi <br/>pisicing elit sed eiusm tempor incidid unt <br/>labore dolore.
                 </Text>
                 <Text mt={4}><strong>Add:</strong> 70-80 Upper St Norwich NR2</Text>
                 <Text><strong>Call:</strong> +01 123 5641 231</Text>
@@ -59,12 +60,26 @@ const Footer = () => {
 
         {/* Contact Section with Email Form */}
         <GridItem colSpan={[1, 1, 1, 1]}>
-          <VStack align="flex-start">
+          <VStack align="flex-start" spacing={4} w="100%">
+            {/* Heading and Text */}
             <Text fontSize="lg" fontWeight="bold">Contacts</Text>
             <Text fontSize="sm">Enter your email address to register for our newsletter subscription</Text>
-            <HStack mt={4} direction={['column', 'row']} spacing={4}>
-              <Input placeholder="Enter your email" />
-              <Button label="Subscribe" onClick={handleClick} mt={"1rem"} />
+
+            {/* Input and Button Section */}
+            <HStack
+              mt={4}
+              spacing={4}
+              w="100%"
+              direction={{ base: 'column', md: 'row' }} // Column on small screens, row on medium and large screens
+              align="flex-start" // Left-align on small screens
+            >
+              {/* Input */}
+              <Input placeholder="Enter your email" w="100%" />
+
+              {/* Button */}
+              <Button onClick={handleClick} w={{ base: '100%', md: 'auto' }} mt={{ base: '1rem', md: '0' }}>
+                Subscribe
+              </Button>
             </HStack>
 
             {/* Social Media Icons */}

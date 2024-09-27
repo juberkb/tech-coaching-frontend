@@ -1,0 +1,264 @@
+/* General styling for the navbar */
+.navbar {
+  width: 100%;
+  overflow: hidden;
+  z-index: 1000;
+  padding: 0rem;
+}
+
+.navbar-container {
+ padding-left: 2rem;
+ padding-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+.nav-item{
+  display: flex;
+  align-items: center; 
+  border-bottom: none;
+  >.nav-item-icon{
+    font-size: 1.2rem;
+    margin-left: .8rem;
+        } 
+}
+.logo-menu-row {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.menu-button {
+  display: none; /* Initially hidden on large screens */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-button.open span {
+  background-color: transparent;
+}
+
+.menu-button.open span:before {
+  transform: rotate(45deg);
+}
+
+.menu-button.open span:after {
+  transform: rotate(-45deg);
+}
+
+.menu-button span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin: 5px;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+/* Styles for the navigation links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  margin-left: -10rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.nav-links.show {
+  position: fixed; 
+  top: 10%;
+  left: 0;
+  width: 70%;
+  height: 100%; 
+  background-color: rgba(255, 255, 255, 0.95); 
+  z-index: 1000; 
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.navSingleButton{
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: white; 
+  background: #1bb69b;
+  display: flex;
+  align-items: center; 
+  gap: 8px;
+}
+
+.navSingleButton:hover {
+  background: linear-gradient(to right, #30b979, #1bb69b);
+  transform: translateY(-2px);
+}
+
+.dropdown-menu.multi-column {
+  display: flex;
+  width: 300px; 
+}
+
+.dropdown-menu:hover {
+  display: flex; 
+  opacity: 1; 
+}
+
+.dropdown-menu {
+  display: flex; 
+  background-color: white; 
+  border: 1px solid #ddd; 
+  padding: 10px; 
+  position: absolute; 
+  z-index: 1000; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  width: 400px; 
+}
+
+.column {
+  flex: 1; 
+  margin-right: 20px; 
+}
+
+.column:last-child {
+  margin-right: 0; 
+}
+
+ul {
+  list-style-type: none; 
+  padding: 0; 
+}
+
+li {
+  margin-bottom: 10px; 
+}
+
+li a {
+  text-decoration: none; 
+  color: #333; 
+  transition: color 0.3s; 
+}
+
+li a:hover {
+  color: #30b979; 
+}
+
+.column img {
+  max-width: 100%;
+  height: auto; 
+}
+
+
+/* Hide the navigation links and menu button on small screens */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0rem;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 85px;
+    left: 00px;
+    width: 65%;
+    height: 100%;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 3rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 0rem;
+  }
+  .nav-item{
+    display: flex;
+    align-items: center; 
+    border-bottom: 1px solid grey;
+
+    >.nav-item-icon{
+font-size: 1.2rem;
+margin-left: 7rem;
+    } 
+  }
+  .nav-links.show {
+    display: flex;
+    background-color: #fff;
+  }
+
+ /* Make the hamburger menu visible on small screens */
+.menu-button {
+  margin-left: 8rem;
+  display: block;
+  position: relative;
+  width: 30px; 
+  height: 24px; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; 
+}
+
+/* Style for the lines of the hamburger */
+.menu-button span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Add the ::before and ::after pseudo-elements to create the "X" effect */
+.menu-button span::before,
+.menu-button span::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease;
+}
+
+/* Position the ::before pseudo-element (upper part of "X") */
+.menu-button span::before {
+  top: -8px; 
+}
+
+/* Position the ::after pseudo-element (lower part of "X") */
+.menu-button span::after {
+  bottom: -8px; 
+}
+
+/* Style for menu button when open (creating the "X") */
+.menu-button.open span {
+  background-color: transparent; 
+}
+
+.menu-button.open span::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-button.open span::after {
+  transform: rotate(-45deg);
+  bottom: 0; 
+}
+
+
+  /* Adjust search and cart icons for small screens */
+  .search-container {
+    display: none; /* Hide search and cart by default */
+  }
+
+  /* If needed, display search and cart with menu */
+  .search-container.show {
+    display: flex;
+  }
+}

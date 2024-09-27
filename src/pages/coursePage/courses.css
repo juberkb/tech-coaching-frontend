@@ -1,0 +1,137 @@
+.hireMeHeading{
+    padding-top: 20px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 1px solid grey;
+}
+.hireMeTextContainer{
+ color: #ffffffb5;
+
+}
+.hireMeContainer{
+display: flex;
+flex-direction: row;
+width: 100%;
+padding-top: 10px;
+>.hireMeSubContainer1{
+    width: 40%;
+}
+
+>.hireMeSubContainer2{
+    width: 60%;
+   
+}
+}
+.textColumn{
+  background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+   }
+   .text-column1{
+    padding-top: 50px;
+ color: black;
+ text-transform: capitalize;
+ margin-top: -10px;
+   }
+   .text-column2{
+    color: black;
+   }
+.gradient-text{
+ padding-top: 70px;
+ margin-left: 20px;
+ margin-right: 40px;
+ text-align: justify;
+ text-transform: capitalize;
+ font-size: 35px;
+   }
+   .gradient-text2{
+ padding-top: 30px;
+ margin-left: 20px;
+ margin-right: 40px;
+ text-align: justify;
+ line-height: 20px;
+ font-weight: normal;
+ font-size: 20px;
+   }
+
+
+
+    @media (max-width: 768px) {
+.hireMeHeading{
+font-weight: 600;
+margin-top: -5rem;
+    font-size: 2.5rem;
+    color: grey;
+}
+.hireMeContainer{
+display: flex;
+flex-direction: column-reverse;
+width: 100%;
+padding-top: 20px;
+>.hireMeSubContainer1{
+    width: 100%;
+padding-left: 0rem;
+padding: 0rem;
+}
+.hireMeButton{
+  margin-left: 3rem;
+}
+>.hireMeSubContainer2{
+  width: 100%;
+}
+}
+.textColumn{
+  display: flex;
+  flex-direction: column;
+   background-color: gray;
+margin-left: 0rem;
+padding: 2rem;
+    margin-right: 20px;
+    border-radius: 20px;
+   }
+   .text-column1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin-left: 20px; */
+    margin: 0px 0px;
+    padding-top: 0rem;
+ color: black;
+ text-transform: capitalize;
+ /* margin-top: -10px; */
+ text-align:start;
+   }
+   .text-column2{
+    color: black;
+      margin-left: -1rem;
+   }
+.gradient-text{
+ padding-top: 20px;
+  margin-left: 0px;
+  padding-left: 1rem;
+ margin-right: 0px;
+ /* margin-left: 3rem;
+ margin-right: 40px; */
+ text-align: start;
+ text-transform: capitalize;
+ font-size: 25px;
+   }
+   .gradient-text2{
+ padding-top: 20px;
+ margin-left: 20px;
+ margin-right: 40px;
+ text-align: justify;
+ line-height: 20px;
+ font-weight: normal;
+ font-size: 20px;
+   }
+
+  }
